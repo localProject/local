@@ -1,25 +1,49 @@
 const express = require("express");
-const path = require("path");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Define middleware here
+app.use(morgan('dev'));
+// Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+// configure using our exported passport function.
+// we need to pass the express app we want configured!
+// order is important! you need to set up passport
+// before you start using it in your routes.
+require('./passport')(app);
+// Add routes, both API and view
+const routes = require("./routes");
+app.use(routes);
+// Here's a little custom error handling middleware
+// that logs the error to console, then renders an
+// error page describing the error.
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.json({
+    error
+  })
+});
+// Set up promises with mongoose
+mongoose.Promise = global.Promise;
+// Connect to the Mongo DB
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/passport-examples",
+  {
+    useMongoClient: true
+  }
+);
 
-// Define API routes here
-
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// Start the API server
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
 
-app.listen(PORT, () => {
-  console.log(`🌎 ==> Server now on port ${PORT}!`);
-});
+
