@@ -1,4 +1,4 @@
 module.exports = {
   User: require('./User'),
-  SocialMediaMembership: require('./SocialMediaMembership')
+  Artisan: require("./artisanModel.js");
 };
