@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // artisan schema
 const ArtisanSchema = new Schema({
 
-    name: {
+    artisanName: {
         type: String,
         trim: true
     },
