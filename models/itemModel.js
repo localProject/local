@@ -19,6 +19,11 @@ const ItemSchema = new Schema({
     price: {
         type: Number,
         trim: true
+    },
+
+    category: {
+        type: String,
+        trim: true
     }
 });
 
