@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // item schema
 const ItemSchema = new Schema({
 
-    name: {
+    itemName: {
         type: String,
         trim: true
     },
