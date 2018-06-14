@@ -31,7 +31,7 @@ const ArtisanSchema = new Schema({
         trim: true
     },
 
-    URL: {
+    website: {
         type: String,
         trim: true
     }, 
