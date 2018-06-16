@@ -44,7 +44,6 @@ class App extends Component {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/create" component={CreateAccountPage} />
-              <Route exact path="/store" component={LocalStore} />
               <Route component={NotFoundPage} />
             </Switch>
           </Fragment>

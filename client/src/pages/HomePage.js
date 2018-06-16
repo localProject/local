@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { Component, Fragment } from 'react';
+import React, {Component} from 'react';
 import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 
@@ -7,47 +7,21 @@ class HomePage extends Component {
   state = {
     stuff: null
   }
-  componentDidMount() {
-    // only try loading stuff if the user is logged in.
-    if (!this.props.user) {
-      return;
-    }
 
-    axios.get('/api/stuff')
-      .then(res => {
-        this.setState({
-          stuff: res.data
-        });
-      })
-      .catch(err => {
-        // if we got an error, we'll just log it and set stuff to an empty array
-        console.log(err);
-        this.setState({
-          stuff: []
-        });
-      });
-  }
   render() {
-    const { user } = this.props; // get the user prop from props
-    const { stuff } = this.state; // get stuff from state
 
     return (
-      <Fragment>
-        {user && stuff &&
-          <div>
-            Welcome back, {user.username}!
-          <List>
-           {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
-          </List>
-          </div>
-        }
-        {user && !stuff &&
-          <div>Hold on, looking for your stuff...</div>
-        }
-        {!user &&
-          <div>Hey! I don't recognize you! Register and log in using the link above</div>
-        }
-      </Fragment>
+
+        <div>
+          This will be the homepage.
+          <br />The navbar will go up there.
+          <br />The jumbotron will go here.
+          <br /> Then the map.
+          <br /> Then the search.
+          <br /> Then things will dynamically appear.
+          <br /> Then the footer at the bottom.
+        </div>
+
     );
   }
 }
