@@ -32,7 +32,8 @@ class ArtisanPage extends Component {
     const { stuff } = this.state; // get stuff from state
 
     return (
-      <Fragment>
+      <div>
+        /* boilerplate code for logging in */
         {user && stuff &&
           <div>
             Welcome back, {user.username}!
@@ -47,11 +48,26 @@ class ArtisanPage extends Component {
         {!user &&
           <div>Hey! I don't recognize you! Register and log in using the link above</div>
         }
-      </Fragment>
+
+        Navbar<br />
+        Jumbotron<br />
+        Company Name & input component<br />
+        Address & input component<br />
+        City & input component<br />
+        County & combobox component<br />
+        Phone & input component<br />
+        Email & input component<br />
+        Category & combobox component<br />
+        About & text area component<br />
+        Profile Picture component<br />
+        Manage Items component<br />
+        <button>Save Changes</button><br />
+        Footer component
+      </div>
     );
   }
 }
 
 // withUser function will wrap the specified component in another component that will
 // inject the currently logged in user as a prop called "user"
-export default withUser(HomePage);
+export default withUser(ArtisanPage);
