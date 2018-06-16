@@ -24,7 +24,8 @@ const ArtisanSchema = new Schema({
     phone: {
         type: String,
         trim: true
-    }
+    },
+    
     email: {
         type: String,
         trim: true
