@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
+import Input from "../components/Input/Input";
 import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 
@@ -51,12 +52,27 @@ class ArtisanPage extends Component {
 
         Navbar<br />
         Jumbotron<br />
-        Company Name & input component<br />
-        Address & input component<br />
-        City & input component<br />
+        <Input 
+          label="company name"
+          placeholder="company name"
+        />
+        <Input 
+        label="address"
+        placeholder="address"
+        />
+        <Input 
+        label="city"
+        placeholder="city"
+        />
         County & combobox component<br />
-        Phone & input component<br />
-        Email & input component<br />
+        <Input 
+        label="phone"
+        placeholder="phone"
+        />
+        <Input 
+        label="email"
+        placeholder="email"
+        />
         Category & combobox component<br />
         About & text area component<br />
         Profile Picture component<br />
