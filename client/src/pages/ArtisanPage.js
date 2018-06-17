@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import Input from "../components/Input/Input";
 import Combobox from "../components/Combobox/Combobox";
-import {region, category, county} from "../components/Combobox/searchOptions";
+import Textarea from "../components/Textarea/Textarea";
+import UploadPhoto from "../components/UploadPhoto/UploadPhoto";
+import {searchByRegion, searchByCategory, searchByCounty} from "../components/Combobox/searchOptions";
 import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 
@@ -68,9 +70,12 @@ class ArtisanPage extends Component {
         />
         <Combobox 
         label="county"
-        data={county}
+        data={searchByCounty}
         />
-        County & combobox component<br />
+        <Combobox 
+        label="region"
+        data={searchByRegion}
+        />
         <Input 
         label="phone"
         placeholder="phone"
@@ -81,12 +86,14 @@ class ArtisanPage extends Component {
         />
         <Combobox 
         label="category"
-        data={category}
+        data={searchByCategory}
         />
         <Textarea 
         label="about"
         />
-        Profile Picture component<br />
+        <UploadPhoto 
+        label="profile picture"
+        />
         Manage Items component<br />
         <button>Save Changes</button><br />
         Footer component
