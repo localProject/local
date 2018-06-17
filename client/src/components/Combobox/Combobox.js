@@ -1,5 +1,6 @@
 import React from "react";
-import searchOptions from "./searchOptions";
+
+// ASK ABOUT THIS ON MONDAY
 
 const Combobox = props => (
     <form>
@@ -7,7 +8,7 @@ const Combobox = props => (
             <label for="{props.label}">{props.label}</label>
             <select className="form-control" id="searchBy">
                 /* map over options */
-                <options>{props.searchBy}</options>
+                {props.data.map(search => <option value="{search}">{search}</option>)}
             </select>
         </div>
     </form>

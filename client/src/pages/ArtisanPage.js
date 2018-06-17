@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import Input from "../components/Input/Input";
+import Combobox from "../components/Combobox/Combobox";
+import {region, category, county} from "../components/Combobox/searchOptions";
 import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 
@@ -64,6 +66,10 @@ class ArtisanPage extends Component {
         label="city"
         placeholder="city"
         />
+        <Combobox 
+        label="county"
+        data={county}
+        />
         County & combobox component<br />
         <Input 
         label="phone"
@@ -73,8 +79,13 @@ class ArtisanPage extends Component {
         label="email"
         placeholder="email"
         />
-        Category & combobox component<br />
-        About & text area component<br />
+        <Combobox 
+        label="category"
+        data={category}
+        />
+        <Textarea 
+        label="about"
+        />
         Profile Picture component<br />
         Manage Items component<br />
         <button>Save Changes</button><br />
