@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {Component} from 'react';
+import CompanyBoxContainer from "../components/CompanyBoxContainer/CompanyBoxContainer";
 import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 
@@ -18,6 +19,7 @@ class HomePage extends Component {
           <br />The jumbotron will go here.
           <br /> Then the map.
           <br /> Then the search.
+          <CompanyBoxContainer />
           <br /> Then things will dynamically appear.
           <br /> Then the footer at the bottom.
         </div>
