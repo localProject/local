@@ -4,9 +4,9 @@ const Textarea = props => (
     <form>
         <div className="form-group">
             <label for="{props.label}">{props.label}</label>
-            <textarea className="form-control" id="about" rows="3" />
+            <textarea className="form-control" id="about" rows="5" />
         </div>   
     </form>
 );
 
-export default Input;
+export default Textarea;
