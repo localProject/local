@@ -12,10 +12,16 @@ class CompanyBoxContainer extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.searchResults.map(result => (
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">Company Name</div>
+                    <div className="col-sm">Address</div>
+                    <div className="col-sm">Contact Info</div>
+                    <div className="col-sm">More Info</div>
+                </div>
+                {/*{this.state.searchResults.map(result => (
                     <CompanyBox
-                        /*triggerModal={this.triggerModal}*/
+                        triggerModal={this.triggerModal}
                         id={result.id}
                         key={result.id}
                         name={result.artisanName}
@@ -29,7 +35,7 @@ class CompanyBoxContainer extends Component {
                         county={result.county}
                         about={result.about}
                     />
-                ))}
+                ))}*/}
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { Component, Fragment } from 'react';
+import React, {Component} from 'react';
 import Input from "../components/Input/Input";
 import Combobox from "../components/Combobox/Combobox";
 import Textarea from "../components/Textarea/Textarea";
