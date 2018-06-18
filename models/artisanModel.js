@@ -6,6 +6,11 @@ const Schema = mongoose.Schema;
 // artisan schema
 const ArtisanSchema = new Schema({
 
+    id: {
+        type: String,
+        trim: true
+    },
+
     artisanName: {
         type: String,
         trim: true
@@ -54,12 +59,12 @@ const ArtisanSchema = new Schema({
     about: {
         type: String,
         trim: true
-    },
+    }
 
-    items: [{
-        type: Schema.Types.ObjectID,
-        ref: "Items"
-    }]
+    // items: [{
+    //     type: Schema.Types.ObjectID,
+    //     ref: "Items"
+    // }]
 });
 
 const Artisan = mongoose.model("Artisan", ArtisanSchema);
