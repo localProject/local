@@ -35,7 +35,7 @@ app.use((error, req, res, next) => {
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/passport-examples",
+  process.env.MONGODB_URI || "mongodb://localhost/localProject",
   {
     useMongoClient: true
   }

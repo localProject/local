@@ -1,25 +1,25 @@
 import React, {Component} from "react";
 
-const CompanyBox = props => (
+const CompanyBox = ({company}) => (
     <div className="row">
-        /*name*/
-        <div className="col-sm">{props.name}</div>
-        /*address*/
+        {/*name*/}
+        <div className="col-sm">{company.artisanName}</div>
+        {/*address*/}
         <div className="col-sm">
-            {props.address}<br />
-            {props.city}
+            {company.address}<br />
+            {company.city}
         </div>
-        /*contact*/
+        {/*contact*/}
         <div className="col-sm">
-            {props.phone} =<br />
-            {props.email}
+            {company.phone}<br />
+            {company.email}
         </div>
-        /*more information*/
+        {/*more information*/}
         <div className="col-sm">
-            <a href={props.site} target="_blank">Website</a><br />
-            <button onClick={() => props.triggerModal(props.id)}>About</button>
+            <a href={company.website} target="_blank">Website</a><br />
+            <button onClick={() => company.triggerModal(company.id)}>About</button>
         </div>
-        /*modal to triggle about = props.modal*/
+        {/*modal to trigger about = company.modal*/}
     </div>
 );
 
