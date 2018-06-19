@@ -8,7 +8,7 @@ const router = express.Router();
 // this is just to save a little typing so in my api routes I don't have to put
 // /api in front of each route.
 router.use('/api', require('./apiRoutes'));
-
+router.use('/api', require('./searchRoutes'));
 // add HTML routes to current router
 router.use(require('./htmlRoutes'));
 
