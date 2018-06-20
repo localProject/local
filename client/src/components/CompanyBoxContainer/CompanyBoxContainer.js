@@ -10,8 +10,8 @@ class CompanyBoxContainer extends Component {
     componentDidMount() {
         // something about no search results before search
         axios.get("/api/artisans")
-        .then(res => this.setState({searchResults: res.data}))
-        .catch(err => console.log(err));
+            .then(res => this.setState({searchResults: res.data}))
+            .catch(err => console.log(err));
     };
 
     render() {
