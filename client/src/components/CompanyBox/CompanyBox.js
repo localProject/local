@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "./CompanyBox.css"
 
 const CompanyBox = ({company}) => (
     <div className="row">
