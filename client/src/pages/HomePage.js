@@ -19,6 +19,7 @@ class HomePage extends Component {
           <br />The jumbotron will go here.
           <br /> Then the map.
           <br /> Then the search.
+          <hr />
           <CompanyBoxContainer />
           <br /> Then things will dynamically appear.
           <br /> Then the footer at the bottom.
