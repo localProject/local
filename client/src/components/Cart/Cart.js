@@ -16,3 +16,4 @@ const Cart = ({purchase}) => (
 );
 
 // remove button will remove it from array
+export default Cart;
