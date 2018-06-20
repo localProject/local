@@ -4,7 +4,7 @@ import Input from "../components/Input/Input";
 import Combobox from "../components/Combobox/Combobox";
 import Textarea from "../components/Textarea/Textarea";
 import UploadPhoto from "../components/UploadPhoto/UploadPhoto";
-import {searchByRegion, searchByCategory, searchByCounty, dummyItems} from "../components/Combobox/searchOptions";
+import {searchByRegion, searchByCategory, searchByCounty} from "../components/Combobox/searchOptions";
 import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 
@@ -94,10 +94,7 @@ class ArtisanPage extends Component {
         <UploadPhoto 
         label="profile picture"
         />
-        <Combobox 
-        label="manage items"
-        data={dummyItems}
-        />
+        Manage items & combobox<br />
         <button>Save Changes</button><br />
         Footer component
       </div>
