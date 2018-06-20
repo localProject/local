@@ -32,3 +32,7 @@ export const searchByCounty = [
     "Vance", "Wake", "Warren", "Washington", "Watauga",
     "Wayne", "Wilkes", "Wilson", "Yadkin", "Yancey"
 ];
+
+export const dummyItems = [
+    "Item 1", "Item 2", "Item 3", "Item 4", "Item 5"
+];
