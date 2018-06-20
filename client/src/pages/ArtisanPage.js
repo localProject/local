@@ -38,7 +38,7 @@ class ArtisanPage extends Component {
 
     return (
       <div>
-        /* boilerplate code for logging in */
+        {/* boilerplate code for logging in
         {user && stuff &&
           <div>
             Welcome back, {user.username}!
@@ -52,7 +52,7 @@ class ArtisanPage extends Component {
         }
         {!user &&
           <div>Hey! I don't recognize you! Register and log in using the link above</div>
-        }
+        }*/}
 
         Navbar<br />
         Jumbotron<br />
