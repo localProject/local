@@ -1,0 +1,9 @@
+.row {
+    border: 1px solid black;
+    margin: 10px auto;
+}
+
+.col-sm {
+    margin: auto;
+    text-align: center;
+}
