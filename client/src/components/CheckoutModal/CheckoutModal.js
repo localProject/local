@@ -24,12 +24,12 @@ class CheckoutModal extends Component {
                     <Cart 
                     purchase={result}
                     />
+                ))}
                 <hr />
                 <div className="row">
                     <h3>total</h3><br />
                     <button>pay</button>
                 </div>
-            ))}
             </div>
         );
     }
