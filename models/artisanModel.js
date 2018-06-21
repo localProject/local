@@ -62,7 +62,7 @@ const ArtisanSchema = new Schema({
     },
 
     items: [{
-        type: Schema.Types.ObjectID,
+        type: Schema.Types.ObjectId,
         ref: "Items"
     }]
 });

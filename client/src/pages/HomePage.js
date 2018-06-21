@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { GoogleApiWrapper } from "google-maps-react";
+import Search from "../components/Search/Search";
 import CompanyBoxContainer from "../components/CompanyBoxContainer/CompanyBoxContainer";
-import { List, ListItem } from 'material-ui/List';
+// import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 import MapContainer from "../components/MapContainer"
 
@@ -16,17 +17,15 @@ class HomePage extends Component {
     return (
 
       <div>
-        This will be the homepage.
-          <br />The navbar will go up there.
-          <br />The jumbotron will go here.
-          <br /> Then the map.
-          <MapContainer google={this.props.google} />
-        <br /> Then the search.
-          <hr />
-        <CompanyBoxContainer />
-        <br /> Then things will dynamically appear.
-          <br /> Then the footer at the bottom.
-        </div>
+        This will be the homepage.<br />
+        The navbar will go up there.<br />
+        The jumbotron will go here.<br />
+        <MapContainer google={this.props.google} /><br />
+        <Search /><br />
+        <hr />
+        <CompanyBoxContainer /><br />
+        Then the footer at the bottom.
+      </div>
 
     );
   }
