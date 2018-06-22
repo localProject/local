@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { GoogleApiWrapper } from "google-maps-react";
 import Search from "../components/Search/Search";
-import CompanyBoxContainer from "../components/CompanyBoxContainer/CompanyBoxContainer";
 // import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 import MapContainer from "../components/MapContainer"
@@ -19,8 +18,6 @@ class HomePage extends Component {
       <div>
         <MapContainer google={this.props.google} /><br />
         <Search /><br />
-        <hr />
-        <CompanyBoxContainer /><br />
       </div>
 
     );
