@@ -14,8 +14,9 @@ class HomePage extends Component {
   render() {
 
     return (
-
+     
       <div>
+           
         <MapContainer google={this.props.google} /><br />
         <Search /><br />
       </div>
