@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Navbar from './components/Navbar';
+import Jumbotron from './components/Jumbotron/Jumbotron';
 
 import { withUser, update } from './services/withUser';
 
@@ -41,6 +42,7 @@ class App extends Component {
             <Navbar
               user={user}
             />
+            <Jumbotron />
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/store" component={LocalStore} />
