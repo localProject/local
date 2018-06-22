@@ -8,6 +8,8 @@ export const Jumbotron = props => {
         <p id='logoP'>
         Bringing local goods to global consumers.
         </p>
+        <button id="about">About</button>  
+
     </div>
   );
 }
