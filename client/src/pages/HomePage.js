@@ -17,14 +17,10 @@ class HomePage extends Component {
     return (
 
       <div>
-        This will be the homepage.<br />
-        The navbar will go up there.<br />
-        The jumbotron will go here.<br />
         <MapContainer google={this.props.google} /><br />
         <Search /><br />
         <hr />
         <CompanyBoxContainer /><br />
-        Then the footer at the bottom.
       </div>
 
     );
