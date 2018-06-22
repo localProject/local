@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./CompanyBox.css"
 
 const CompanyBox = ({company}) => (
-    <div className="row">
+    <div className="row company-row">
         {/*name*/}
         <div className="col-sm">{company.artisanName}</div>
         {/*address*/}
