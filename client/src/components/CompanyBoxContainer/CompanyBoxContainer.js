@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CompanyBox from "../CompanyBox/CompanyBox";
+import "./CompanyBoxContainer.css";
 import axios from "axios";
 
 class CompanyBoxContainer extends Component {
@@ -16,7 +17,7 @@ class CompanyBoxContainer extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container company-container">
                 <div className="row">
                     <div className="col-sm">
                         <h3>Company Name</h3>

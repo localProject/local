@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import "./Search.css";
+import CompanyBoxContainer from "../CompanyBoxContainer/CompanyBoxContainer";
 import Combobox from "../Combobox/Combobox";
 import {searchBy, searchByRegion, searchByCategory, searchByCounty} from "../Combobox/searchOptions";
 // import axios from "axios";
@@ -40,9 +42,12 @@ class Search extends Component {
 
     render() {
         return (
+            <div>
             <div className="container">
                 <div className="row">
-                    <h2>Choose how you would like to search.</h2>
+                    <div className="col-sm">
+                        <h2>Choose how you would like to search.</h2>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col-sm">
@@ -59,6 +64,14 @@ class Search extends Component {
                         />
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col-sm">
+                        <button onClick={this.handleClick}>Search</button>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            <CompanyBoxContainer />
             </div>
         )
     }
