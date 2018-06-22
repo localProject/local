@@ -1,25 +1,26 @@
-import axios from 'axios';
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import axios from "axios";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
 
-import { withUser, update } from './services/withUser';
+import { withUser, update } from "./services/withUser";
 
-import CreateAccountPage from './pages/CreateAccountPage';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
+import CreateAccountPage from "./pages/CreateAccountPage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 import LocalStore from "./pages/LocalStore";
 import ArtisanPage from "./pages/ArtisanPage";
-import NotFoundPage from './pages/NotFoundPage';
+import NotFoundPage from "./pages/NotFoundPage";
 
 class App extends Component {
   componentDidMount() {
     // this is going to double check that the user is still actually logged in
     // if the app is reloaded. it's possible that we still have a user in sessionStorage
     // but the user's session cookie expired.
-    axios.get('/api/auth')
+    axios
+      .get("/api/auth")
       .then(res => {
         // if we get here, the user's session is still good. we'll update the user
         // to make sure we're using the most recent values just in case
@@ -32,15 +33,14 @@ class App extends Component {
         }
       });
   }
+
   render() {
     const { user } = this.props;
     return (
       <Router>
         <MuiThemeProvider>
           <Fragment>
-            <Navbar
-              user={user}
-            />
+            <Navbar user={user} />
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/store" component={LocalStore} />
