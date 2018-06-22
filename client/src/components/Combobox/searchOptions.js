@@ -1,3 +1,7 @@
+export const searchBy = [
+    "Category", "Region", "County"
+];
+
 export const searchByCategory = [
     "Art", "Bakery", "Beer", "Coffee", "Condiments", "Dairy",
     "Flowers", "Furniture", "Gluten-Free", "Health & Beauty", "Home",

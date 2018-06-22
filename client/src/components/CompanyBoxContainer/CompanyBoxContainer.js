@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CompanyBox from "../CompanyBox/CompanyBox";
+import "./CompanyBoxContainer.css";
 import axios from "axios";
 
 class CompanyBoxContainer extends Component {
@@ -16,12 +17,20 @@ class CompanyBoxContainer extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container company-container">
                 <div className="row">
-                    <div className="col-sm">Company Name</div>
-                    <div className="col-sm">Address</div>
-                    <div className="col-sm">Contact Info</div>
-                    <div className="col-sm">More Info</div>
+                    <div className="col-sm">
+                        <h3>Company Name</h3>
+                    </div>
+                    <div className="col-sm">
+                        <h3>Address</h3>
+                    </div>
+                    <div className="col-sm">
+                        <h3>Contact Info</h3>
+                    </div>
+                    <div className="col-sm">
+                        <h3>More Info</h3>
+                    </div>
                 </div>
                 {this.state.searchResults.map(result => (
                     <CompanyBox

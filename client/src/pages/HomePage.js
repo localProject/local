@@ -5,6 +5,7 @@ import CompanyBoxContainer from "../components/CompanyBoxContainer/CompanyBoxCon
 import { List, ListItem } from "material-ui/List";
 import { withUser } from "../services/withUser";
 import MapContainer from "../components/MapContainer";
+import Search from "../components/Search/Search";
 
 const testArtisans = [
   {
@@ -22,18 +23,13 @@ const testArtisans = [
 
 class HomePage extends Component {
   state = {
-    stuff: null
+    stuff: null,
+    artisans: []
   };
-
-  constructor(props) {
-    super(props);
-    this.state = { data: [] };
-    this.loadArtisansFromDB = this.loadArtisansFromDB.bind(this);
-  }
 
   loadArtisansFromDB = () => {
     axios.get("api/artisans").then(res => {
-      this.setState({ data: res.data });
+      this.setState({ artisans: res.data });
     });
   };
 
@@ -44,15 +40,10 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        This will be the homepage.
-        <br />The navbar will go up there.
-        <br />The jumbotron will go here.
         <MapContainer google={this.props.google} artisans={testArtisans} />
-        <br /> Then the search.
-        <hr />
-        <CompanyBoxContainer />
-        <br /> Then things will dynamically appear.
-        <br /> Then the footer at the bottom.
+        <br />
+        <Search />
+        <br />
       </div>
     );
   }
