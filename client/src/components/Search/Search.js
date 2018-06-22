@@ -6,13 +6,13 @@ import {searchBy, searchByRegion, searchByCategory, searchByCounty} from "../Com
 class Search extends Component {
     state = {
         searchOptions: "",
-        chosenOption: ""
+        label: "",
+        chosenOption: []
     };
 
-    // componentDidMount() {
-    //     this.setState({searchOptions: "Category"});
-    //     this.setState({chosenOption: {searchByCategory}})
-    // };
+    componentDidMount() {
+        this.setState({searchOptions: "Option"});
+    };
 
     // populate second combobox based on first one
     handleChange = e => {
@@ -20,11 +20,22 @@ class Search extends Component {
         this.setState({searchOptions: option}, () =>
             console.log(this.state.searchOptions)
         );
-        
-        // populate second array based on option
-        this.setState({chosenOption: `searchBy${option}`}, () =>
-            console.log(this.state.chosenOption)
-        );
+        this.searchByThisOption(option);
+    }
+
+    searchByThisOption = option => {
+        this.setState({label: option});
+        switch(option) {
+            case "Region":
+                this.setState({chosenOption: searchByRegion});
+                break;
+            case "Category":
+                this.setState({chosenOption: searchByCategory});
+                break;
+            case "County":
+                this.setState({chosenOption: searchByCounty});
+                break;
+        };
     }
 
     render() {
@@ -44,7 +55,7 @@ class Search extends Component {
                     <div className="col-sm">
                         <Combobox 
                         label={this.state.searchOptions}
-                        data={searchByCategory}
+                        data={this.state.chosenOption}
                         />
                     </div>
                 </div>
