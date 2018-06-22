@@ -1,5 +1,9 @@
 .jumbotron {
     font-family: 'Permanent Marker', cursive;
+    background-color: #079DCF;
+    text-align: center;
+    border-color: black;
+    
 }
 
 #logoP {

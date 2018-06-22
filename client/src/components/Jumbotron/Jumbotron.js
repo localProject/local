@@ -1,4 +1,5 @@
 import React from "react";
+import "./Jumbotron.css"
 
 export const Jumbotron = props => {
   return (
@@ -11,6 +12,7 @@ export const Jumbotron = props => {
   );
 }
 
+export default Jumbotron;
 
 
 
