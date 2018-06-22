@@ -27,6 +27,7 @@ const Navbar = (props) => {
   }
   return (
     <AppBar
+    
       iconElementRight={user ?
         <LoginMenu username={username} onLogOut={handleLogOut} />
         : <LoginButton onClick={handleLogIn} />}
