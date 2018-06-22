@@ -5,34 +5,24 @@ import axios from "axios";
 
 class Search extends Component {
     state = {
-        searchOptions: ""
+        searchOptions: "",
+        chosenOption: ""
     };
 
     // componentDidMount() {
-        
-    // }
+    //     this.setState({searchOptions: "Category"});
+    //     this.setState({chosenOption: {searchByCategory}})
+    // };
 
     // populate second combobox based on first one
     handleChange = e => {
         let option = e.target.value;
         this.setState({searchOptions: option}, () =>
         console.log(this.state.searchOptions));
-        // searchByThisOption(this.state.searchOptions);
-    };
-
-    // searchByThisOption = option => {
-    //     switch(option) {
-    //         case "Region":
-    //             this.setState({label: "Region", data: searchByRegion});
-    //             break;
-    //         case "Category":
-    //             this.setState({label: "Category", data: searchByCategory});
-    //             break;
-    //         case "County":
-    //             this.setState({label: "County", data: searchByCounty});
-    //             break;
-    //     }
-    // };
+        
+        // populate second array based on option
+        this.setState({chosenOption: `searchBy${option}`});
+    }
 
     render() {
         return (
@@ -52,12 +42,13 @@ class Search extends Component {
                         <Combobox 
                         label={this.state.searchOptions}
                         data={searchByCategory}
+                        
                         />
                     </div>
                 </div>
             </div>
         )
     }
-}
+};
 
 export default Search;
