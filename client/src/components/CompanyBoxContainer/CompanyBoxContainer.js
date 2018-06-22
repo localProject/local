@@ -18,10 +18,18 @@ class CompanyBoxContainer extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-sm">Company Name</div>
-                    <div className="col-sm">Address</div>
-                    <div className="col-sm">Contact Info</div>
-                    <div className="col-sm">More Info</div>
+                    <div className="col-sm">
+                        <h3>Company Name</h3>
+                    </div>
+                    <div className="col-sm">
+                        <h3>Address</h3>
+                    </div>
+                    <div className="col-sm">
+                        <h3>Contact Info</h3>
+                    </div>
+                    <div className="col-sm">
+                        <h3>More Info</h3>
+                    </div>
                 </div>
                 {this.state.searchResults.map(result => (
                     <CompanyBox

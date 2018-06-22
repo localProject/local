@@ -11,6 +11,7 @@ export const Jumbotron = props => {
   );
 }
 
+export default Jumbotron;
 
 
 

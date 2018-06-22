@@ -6,7 +6,7 @@ const Combobox = props => (
         <div className="form-group">
             <label for="{props.label}">{props.label}</label>
             <select className="form-control" onChange={props.handleChange}>
-                <option></option>
+                <option disabled></option>
                 {/* map over options */}
                 {props.data.map(search => <option value={search}>{search}</option>)}
             </select>
