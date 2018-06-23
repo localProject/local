@@ -8,12 +8,12 @@ class CompanyBoxContainer extends Component {
         searchResults: []
     };
 
-    componentDidMount() {
-        // something about no search results before search
-        axios.get("/api/artisans")
-            .then(res => this.setState({searchResults: res.data}))
-            .catch(err => console.log(err));
-    };
+    // componentDidMount() {
+    //     // something about no search results before search
+    //     axios.get("/api/artisans")
+    //         .then(res => this.setState({searchResults: res.data}))
+    //         .catch(err => console.log(err));
+    // };
 
     render() {
         return (

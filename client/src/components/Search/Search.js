@@ -43,35 +43,35 @@ class Search extends Component {
     render() {
         return (
             <div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm">
-                        <h2>Choose how you would like to search.</h2>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm">
+                            <h2>Choose how you would like to search.</h2>
+                        </div>
                     </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <Combobox 
+                            label="Search Options"
+                            data={searchBy}
+                            handleChange={this.handleChange}
+                            />
+                        </div>
+                        <div className="col-sm">
+                            <Combobox 
+                            label={this.state.searchOptions}
+                            data={this.state.chosenOption}
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm">
+                            <button onClick={this.handleClick}>Search</button>
+                        </div>
+                    </div>
+                    <hr />
                 </div>
-                <div className="row">
-                    <div className="col-sm">
-                        <Combobox 
-                        label="Search Options"
-                        data={searchBy}
-                        handleChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="col-sm">
-                        <Combobox 
-                        label={this.state.searchOptions}
-                        data={this.state.chosenOption}
-                        />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm">
-                        <button onClick={this.handleClick}>Search</button>
-                    </div>
-                </div>
-                <hr />
-            </div>
-            <CompanyBoxContainer />
+                <CompanyBoxContainer />
             </div>
         )
     }
