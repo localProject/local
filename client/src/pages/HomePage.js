@@ -6,6 +6,8 @@ import { List, ListItem } from "material-ui/List";
 import { withUser } from "../services/withUser";
 import ArtisanMap from "../components/ArtisanMap";
 import Search from "../components/Search/Search";
+import MapContainer from "../components/ArtisanMap";
+import FancyBanner from "../components/FancyBanner";
 
 class HomePage extends Component {
   state = {
@@ -34,6 +36,12 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+        <FancyBanner img="2" gradient="0" height="400px" />
+        <MapContainer
+          google={this.props.google}
+          artisans={this.state.artisans}
+        />
+        <br />
         <Search search={this.searchForArtisans} />
         <ArtisanMap google={this.props.google} artisans={this.state.artisans} />
         <br />

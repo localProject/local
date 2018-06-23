@@ -1,0 +1,12 @@
+.card-container-header::before {
+    background: #555dd8;
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 1.7rem;
+    left: -3.75rem;
+    margin-right: 20px;
+    transform: translateY(7px);
+    width: 1.7rem;
+    
+  }

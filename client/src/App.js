@@ -3,8 +3,6 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
-import Navbar from "./components/Navbar";
-import Jumbotron from "./components/Jumbotron/Jumbotron";
 import Footer from "./components/Footer/Footer";
 
 import { withUser, update } from "./services/withUser";
@@ -14,13 +12,18 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import LocalStore from "./pages/LocalStore";
 import ArtisanPage from "./pages/ArtisanPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import NotFoundPage from './pages/NotFoundPage';
+import ProductPage from './pages/ProductPage';
+import FancyBanner from './components/FancyBanner'
+import ItemCardContainer from './components/ItemCardContainer'
+//import NotFoundPage from "./pages/NotFoundPage";
 
 class App extends Component {
   componentDidMount() {
     // this is going to double check that the user is still actually logged in
     // if the app is reloaded. it's possible that we still have a user in sessionStorage
     // but the user's session cookie expired.
+    axios.get('/api/auth')
     axios
       .get("/api/auth")
       .then(res => {
@@ -40,22 +43,21 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Router>
-        <MuiThemeProvider>
-          <Fragment>
-            <Navbar user={user} />
-            <Jumbotron />
-            <Footer />
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/store" component={LocalStore} />
-              <Route exact path="/artisan" component={ArtisanPage} />
-              <Route exact path="/login" component={LoginPage} />
-              <Route exact path="/create" component={CreateAccountPage} />
-              <Route component={NotFoundPage} />
-            </Switch>
-          </Fragment>
-        </MuiThemeProvider>
-      </Router>
+      <MuiThemeProvider>
+        <Fragment>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/products" component={ProductPage} />
+            <Route exact path="/store" component={LocalStore} />
+            <Route exact path="/artisan" component={ArtisanPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/create" component={CreateAccountPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+          <Footer />
+        </Fragment>
+      </MuiThemeProvider>
+    </Router>
     );
   }
 }
