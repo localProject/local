@@ -32,8 +32,8 @@ export default class FancyBanner extends Component {
 no-repeat scroll center center/cover border-box , ${this.state.gradient[this.props.gradient]}`,
 'height': this.props.height}}>
         <div class="links">
-          < Link to='/'class="nav"> Home </Link>
-          <Link to='/products'class="nav"> Products </Link>
+          < Link to='/' class="nav"> Home </Link>
+          <Link to='/products' class="nav"> Products </Link>
           <div class="nav"> Stores </div>
           <div class="nav"> About Us </div>
         </div>
@@ -49,7 +49,7 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
         </div>
 
         <div class="info">
-          <div class="about">Welcome to Local.</div>
+          <div class="about">local.</div>
           <div class="about small">Bringing local goods to global consumers.</div>
           <div class="create">Create a store</div>
         </div>

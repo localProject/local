@@ -4,12 +4,9 @@ import { GoogleApiWrapper } from "google-maps-react";
 import CompanyBoxContainer from "../components/CompanyBoxContainer/CompanyBoxContainer";
 import { List, ListItem } from "material-ui/List";
 import { withUser } from "../services/withUser";
-//import MapContainer from "../components/MapContainer";
 import Search from "../components/Search/Search";
-// import { List, ListItem } from 'material-ui/List';
-//import { withUser } from '../services/withUser';
-import MapContainer from "../components/MapContainer"
-import FancyBanner from '../components/FancyBanner'
+import MapContainer from "../components/MapContainer";
+import FancyBanner from '../components/FancyBanner';
 
 class HomePage extends Component {
   state = {
@@ -39,8 +36,6 @@ class HomePage extends Component {
     return (
       <div>
         <FancyBanner img='2' gradient='0' height='400px'/>
-        <MapContainer google={this.props.google} /><br />
-        <Search /><br />
         <MapContainer
           google={this.props.google}
           artisans={this.state.artisans}
