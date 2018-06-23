@@ -7,29 +7,23 @@ import { withUser } from "../services/withUser";
 import MapContainer from "../components/MapContainer";
 import Search from "../components/Search/Search";
 
-const testArtisans = [
-  {
-    artisanName: "Mackey's Ferry Peanuts",
-    address: "30871 US-64",
-    city: "Jamesville",
-    phone: "888-637-6887",
-    email: "",
-    website: "https://www.mpfnuts.com",
-    category: "Snacks",
-    region: "Coastal Plains",
-    county: "Martin"
-  }
-];
-
 class HomePage extends Component {
   state = {
     stuff: null,
     artisans: []
   };
 
+  searchForArtisans = (searchType = "", searchValue = "") => {
+    axios
+      .get(`/api/artisans/${searchType.toLowerCase()}/${searchValue}`)
+      .then(res => {
+        this.setState({ artisans: res.data.slice(0, 20) });
+      });
+  };
+
   loadArtisansFromDB = () => {
-    axios.get("api/artisans").then(res => {
-      this.setState({ artisans: res.data });
+    axios.get("/api/artisans").then(res => {
+      this.setState({ artisans: res.data.slice(0, 20) });
     });
   };
 
@@ -40,9 +34,13 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <MapContainer google={this.props.google} artisans={testArtisans} />
+        <MapContainer
+          google={this.props.google}
+          artisans={this.state.artisans}
+        />
         <br />
-        <Search />
+        <Search search={this.searchForArtisans} />
+        <CompanyBoxContainer searchResults={this.state.artisans} />
         <br />
       </div>
     );
