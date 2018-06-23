@@ -44,6 +44,7 @@ router.route('/auth')
     });
   });
 
+
 router.route('/users')
   // POST to /api/users will create a new user
   .post((req, res, next) => {
