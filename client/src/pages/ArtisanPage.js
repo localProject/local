@@ -1,12 +1,9 @@
 import axios from 'axios';
 import React, {Component} from 'react';
-import Input from "../components/Input/Input";
-import Combobox from "../components/Combobox/Combobox";
-import Textarea from "../components/Textarea/Textarea";
-import UploadPhoto from "../components/UploadPhoto/UploadPhoto";
-import {searchByRegion, searchByCategory, searchByCounty} from "../components/Combobox/searchOptions";
+import ArtisanContainer from "../components/ArtisanContainer/ArtisanContainer";
 // import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
+import FancyBanner from '../components/FancyBanner';
 
 class ArtisanPage extends Component {
   state = {
@@ -53,47 +50,8 @@ class ArtisanPage extends Component {
         {!user &&
           <div>Hey! I don't recognize you! Register and log in using the link above</div>
         }*/}
-
-        <Input 
-          label="company name"
-          placeholder="company name"
-        />
-        <Input 
-        label="address"
-        placeholder="address"
-        />
-        <Input 
-        label="city"
-        placeholder="city"
-        />
-        <Combobox 
-        label="county"
-        data={searchByCounty}
-        />
-        <Combobox 
-        label="region"
-        data={searchByRegion}
-        />
-        <Input 
-        label="phone"
-        placeholder="phone"
-        />
-        <Input 
-        label="email"
-        placeholder="email"
-        />
-        <Combobox 
-        label="category"
-        data={searchByCategory}
-        />
-        <Textarea 
-        label="about"
-        />
-        <UploadPhoto 
-        label="profile picture"
-        />
-        Manage items & combobox<br />
-        <button>Save Changes</button><br />
+        <FancyBanner img='2' gradient='0' height='400px'/>
+        <ArtisanContainer />
       </div>
     );
   }

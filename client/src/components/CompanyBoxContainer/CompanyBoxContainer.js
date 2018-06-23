@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CompanyBox from "../CompanyBox/CompanyBox";
 import "./CompanyBoxContainer.css";
-import axios from "axios";
 
 class CompanyBoxContainer extends Component {
   render() {

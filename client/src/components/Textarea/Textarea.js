@@ -6,7 +6,7 @@ const Textarea = props => (
         <div className="row">
             <div className="col-sm">
                 <form>
-                    <div className="form-group row">
+                    <div className="form-group">
                         <label for="{props.label}">{props.label}</label>
                         <textarea className="form-control area-input" rows="3" />
                     </div>   
