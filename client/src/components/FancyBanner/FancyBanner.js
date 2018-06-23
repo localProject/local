@@ -36,6 +36,7 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
           <Link to='/products'class="nav"> Products </Link>
           <div class="nav"> Stores </div>
           <div class="nav"> About Us </div>
+          
         </div>
         <div class="account">
           <div class="profile-pic" />

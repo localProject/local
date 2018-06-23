@@ -1,26 +1,14 @@
-import axios from 'axios';
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import axios from "axios";
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
-import Navbar from './components/Navbar';
-import Jumbotron from './components/Jumbotron/Jumbotron';
-import Footer from './components/Footer/Footer';
 import Navbar from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron/Jumbotron";
 import Footer from "./components/Footer/Footer";
 
 import { withUser, update } from "./services/withUser";
 
-import { withUser, update } from './services/withUser';
-
-import CreateAccountPage from './pages/CreateAccountPage';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
 import CreateAccountPage from "./pages/CreateAccountPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -37,7 +25,6 @@ class App extends Component {
     // this is going to double check that the user is still actually logged in
     // if the app is reloaded. it's possible that we still have a user in sessionStorage
     // but the user's session cookie expired.
-    axios.get('/api/auth')
     axios
       .get("/api/auth")
       .then(res => {
@@ -59,7 +46,7 @@ class App extends Component {
       <Router>
       <MuiThemeProvider>
         <Fragment>
-         
+        
 
           
           <Switch>
