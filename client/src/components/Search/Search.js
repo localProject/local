@@ -9,7 +9,8 @@ class Search extends Component {
     state = {
         searchOptions: "",
         label: "",
-        chosenOption: []
+        chosenOption: [],
+        choiceMade: ""
     };
 
     componentDidMount() {
@@ -61,6 +62,7 @@ class Search extends Component {
                             <Combobox 
                             label={this.state.searchOptions}
                             data={this.state.chosenOption}
+                            handleChange={this.getSelection}
                             />
                         </div>
                     </div>

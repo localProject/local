@@ -5,6 +5,7 @@ import Search from "../components/Search/Search";
 // import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 import MapContainer from "../components/MapContainer"
+import CompanyBoxContainer from "../components/CompanyBoxContainer/CompanyBoxContainer";
 
 class HomePage extends Component {
   state = {
