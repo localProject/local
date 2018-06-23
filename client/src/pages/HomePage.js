@@ -43,7 +43,7 @@ class HomePage extends Component {
         />
         <br />
         <Search search={this.searchForArtisans} />
-        <ArtisanMap google={this.props.google} artisans={this.state.artisans} />
+        {/*<ArtisanMap google={this.props.google} artisans={this.state.artisans} />*/}
         <br />
         <CompanyBoxContainer searchResults={this.state.artisans} />
         <br />
