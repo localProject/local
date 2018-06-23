@@ -1,20 +1,17 @@
 import React from "react";
-import "./Jumbotron.css"
+// import styled from "styled-components";
+import "./Jumbotron.css";
 
 export const Jumbotron = props => {
   return (
-    <div className='jumbotron'>
+    <div className="jumbotron">
       <h1>local.</h1>
-        <p id='logoP'>
-        Bringing local goods to global consumers.
-        </p>
-        <button id="about">About</button>  
-
+      <h2>Bringing local goods to global consumers.</h2>
+      <button className="about-local-button">
+        <p>About</p>
+      </button>
     </div>
   );
-}
+};
 
 export default Jumbotron;
-
-
-

@@ -4,7 +4,7 @@ import { GoogleApiWrapper } from "google-maps-react";
 import CompanyBoxContainer from "../components/CompanyBoxContainer/CompanyBoxContainer";
 import { List, ListItem } from "material-ui/List";
 import { withUser } from "../services/withUser";
-import MapContainer from "../components/MapContainer";
+import ArtisanMap from "../components/ArtisanMap";
 import Search from "../components/Search/Search";
 
 class HomePage extends Component {
@@ -34,12 +34,9 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <MapContainer
-          google={this.props.google}
-          artisans={this.state.artisans}
-        />
-        <br />
         <Search search={this.searchForArtisans} />
+        <ArtisanMap google={this.props.google} artisans={this.state.artisans} />
+        <br />
         <CompanyBoxContainer searchResults={this.state.artisans} />
         <br />
       </div>

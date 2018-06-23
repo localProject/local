@@ -1,11 +1,32 @@
 .jumbotron {
-    font-family: 'Permanent Marker', cursive;
-    background-color: #079DCF;
-    text-align: center;
-    border-color: black;
-    
+  border-color: black;
+  position: relative;
 }
 
-#logoP {
-    font-size: 44px;
+h1 {
+  font-family: "Permanent Marker";
+  font-size: 60px;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Roboto";
+  font-size: 30px;
+  text-align: center;
+}
+
+.about-local-button {
+  border-radius: 1px 1px 1px 1px;
+  box-shadow: 2px 2px;
+  height: 40px;
+  width: 80px;
+  margin-left: 45%;
+  margin-top: 40px;
+  background-color: #68b159;
+}
+
+p {
+  font-size: 30px;
+  font-family: "Roboto";
+  margin-top: 3px;
 }
