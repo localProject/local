@@ -14,7 +14,17 @@ export default class InfoWindow extends React.Component {
   }
 
   openWindow = () => {
-    this.infoWindow.setContent(this.props.artisan.artisanName);
+    this.infoWindow.setContent(
+      "<p>" +
+        this.props.artisan.artisanName +
+        "<br />" +
+        this.props.artisan.address +
+        ", " +
+        this.props.artisan.city +
+        ", " +
+        "NC" +
+        "</p>"
+    );
     this.infoWindow.open(this.props.map, this.props.marker);
   };
 
