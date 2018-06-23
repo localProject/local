@@ -7,8 +7,8 @@
     }
     100% {
       opacity: 1;
-      -webkit-transform: none;
-              transform: none;
+      transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+     
     }
   }
 
@@ -25,15 +25,16 @@
 }
 .product-card:hover {
     box-shadow: 0px 0px 114px 0px rgba(0, 0, 0, 0.08), 0px 30px 25px 0px rgba(0, 0, 0, 0.05);
-    transform: translateY(-5px);
+    transform: translateY(-5px) !important;
+
 }
 .product-card
 {
     opacity:0;
-    
+ 
   display: inline-block;
 float: left;
-  transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 20px;
    box-sizing: inline-block;
    
