@@ -54,8 +54,6 @@ class ArtisanPage extends Component {
           <div>Hey! I don't recognize you! Register and log in using the link above</div>
         }*/}
 
-        Navbar<br />
-        Jumbotron<br />
         <Input 
           label="company name"
           placeholder="company name"
@@ -96,7 +94,6 @@ class ArtisanPage extends Component {
         />
         Manage items & combobox<br />
         <button>Save Changes</button><br />
-        Footer component
       </div>
     );
   }
