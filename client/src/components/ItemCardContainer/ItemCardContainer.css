@@ -1,0 +1,111 @@
+
+@keyframes rotateIn {
+    0% {
+      opacity: 0;
+      -webkit-transform: rotateX(30deg) rotateY(30deg) translateY(300px) translateZ(200px);
+              transform: rotateX(30deg) rotateY(30deg) translateY(300px) translateZ(200px);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+              transform: none;
+    }
+  }
+
+.image
+{
+  background-image: url('https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?cs=srgb&dl=4k-wallpaper-adventure-climb-691668.jpg&fm=jpg');
+  width: 100%;
+  height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 30% 20%;
+  position: absolute;
+ 
+}
+.product-card:hover {
+    box-shadow: 0px 0px 114px 0px rgba(0, 0, 0, 0.08), 0px 30px 25px 0px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+}
+.product-card
+{
+    opacity:0;
+    
+  display: inline-block;
+float: left;
+  transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 20px;
+   box-sizing: inline-block;
+   
+  margin-top: 20px;
+  border-radius: 12px;
+  height: 300px;
+  width: 225px;
+    box-shadow: 0px 0px 51px 0px rgba(0, 0, 0, 0.08), 0px 6px 18px 0px rgba(0, 0, 0, 0.05);
+  overflow:hidden;
+}
+.product-info
+{
+    display:flex !important;
+  overflow:hidden;
+  text-align: left;
+  height: 75px; 
+  width: 100%;
+ 
+  margin-top:  225px;
+  border-top: 1px #e5e5e5 solid;
+    
+}
+.product-price
+{
+   font-size: 25px;
+   text-align: center;
+    margin-top: 19px;
+    margin-left: 12px;
+    display:flex !important;
+    position: absolute;
+    
+}
+.product-name
+{
+  margin-top: 5px;
+  margin-left:1px;
+  position:absolute;
+  font-size: 16px;
+  display:flex !important;
+}
+  .product-company
+{
+    display:flex !important;
+  color:grey;
+   font-size:15px;
+   position: absolute;
+  margin-top: 32px;
+  margin-left: 2px;
+}
+.product-info-text
+{
+
+    display:flex !important;
+  
+  margin-top:10px;
+  margin-left:80px;
+}
+.product-image
+{
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+   overflow: hidden;
+
+  height: 225px;
+  width: 225px;
+  position: absolute;
+  
+}
+.product-container
+{    text-align: center;
+    display: block;
+  margin: 50px;
+  margin-top: 5px;
+ height: 500px;
+}

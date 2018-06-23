@@ -16,7 +16,9 @@ import LoginPage from './pages/LoginPage';
 import LocalStore from "./pages/LocalStore";
 import ArtisanPage from "./pages/ArtisanPage";
 import NotFoundPage from './pages/NotFoundPage';
-
+import ProductPage from './pages/ProductPage';
+import FancyBanner from './components/FancyBanner'
+import ItemCardContainer from './components/ItemCardContainer'
 class App extends Component {
   componentDidMount() {
     // this is going to double check that the user is still actually logged in
@@ -39,25 +41,23 @@ class App extends Component {
     const { user } = this.props;
     return (
       <Router>
-        <MuiThemeProvider>
-          <Fragment>
-            <Navbar
-              user={user}
-            />
-            <Jumbotron />
+      <MuiThemeProvider>
+        <Fragment>
+         
 
-            <Footer />
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/store" component={LocalStore} />
-              <Route exact path="/artisan" component={ArtisanPage} />
-              <Route exact path="/login" component={LoginPage} />
-              <Route exact path="/create" component={CreateAccountPage} />
-              <Route component={NotFoundPage} />
-            </Switch>
-          </Fragment>
-        </MuiThemeProvider>
-      </Router>
+          
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/products" component={ProductPage} />
+            <Route exact path="/store" component={LocalStore} />
+            <Route exact path="/artisan" component={ArtisanPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/create" component={CreateAccountPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </Fragment>
+      </MuiThemeProvider>
+    </Router>
     );
   }
 }

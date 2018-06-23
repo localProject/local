@@ -5,7 +5,7 @@ import Search from "../components/Search/Search";
 // import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 import MapContainer from "../components/MapContainer"
-
+import FancyBanner from '../components/FancyBanner'
 class HomePage extends Component {
   state = {
     stuff: null
@@ -16,7 +16,7 @@ class HomePage extends Component {
     return (
      
       <div>
-           
+        <FancyBanner img='2' gradient='0' height='400px'/>
         <MapContainer google={this.props.google} /><br />
         <Search /><br />
       </div>
