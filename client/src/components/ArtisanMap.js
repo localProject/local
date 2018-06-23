@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import styled from "styled-components";
 import InfoWindow from "./InfoWindow";
 import Artisan from "./Artisan";
 
+const MapContainer = styled.div`
+  width: 90vw;
+  height: 60vh;
+  margin-left: 5%;
+  border-radius: 10px 10px;
+  box-shadow: 4px 6px 4px 3px;
+`;
 
-export default class MapContainer extends Component {
+export default class ArtisanMap extends Component {
   state = {
     map: undefined,
     activeMarker: null,
@@ -56,18 +64,11 @@ export default class MapContainer extends Component {
   }
 
   render() {
-    const style = {
-      // MUST specify dimensions of the Google map or it will not work. Works best when style is specified inside the render function and created as an object
-      width: "60vw", // 90vw basically means take up 90% of the width screen. px also works.
-      height: "50vh", // 75vh similarly will take up roughly 75% of the height of the screen. px also works.
-    
-    };
-
-    // in our return function you must return a div with ref='map' and style.
+    // in our return function you must return a div with ref='map'.
     return (
       <div>
-        <div ref="map" style={style}>
-          loading map...
+        <div>
+          <MapContainer ref="map" />
         </div>
         <InfoWindow
           google={this.props.google}
@@ -76,9 +77,9 @@ export default class MapContainer extends Component {
           artisan={this.state.activeArtisan}
           closeWindow={this.closeInfoWindow}
         />
-        {this.props.artisans.map(artisan => (
+        {this.props.artisans.map((artisan, index) => (
           <Artisan
-            key={artisan.address}
+            key={artisan.address || index}
             google={this.props.google}
             map={this.state.map}
             artisan={artisan}
@@ -90,8 +91,6 @@ export default class MapContainer extends Component {
   }
 }
 
-MapContainer.defaultProps = {
+ArtisanMap.defaultProps = {
   artisans: []
 };
-
-

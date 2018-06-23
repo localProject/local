@@ -11,6 +11,7 @@ import {
 
 class Search extends Component {
   state = {
+    option: "",
     searchBy: "",
     searchValue: "",
     chosenOption: []
@@ -19,8 +20,7 @@ class Search extends Component {
   // populate second combobox based on first one
   updateSearchBy = e => {
     let option = e.target.value;
-    this.setState({ searchBy: option }, () => console.log(this.state.searchBy));
-    this.searchByThisOption(option);
+    this.setState({ searchBy: option }), this.searchByThisOption(option);
   };
 
   updateSearchValue = e => {

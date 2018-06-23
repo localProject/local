@@ -3,8 +3,6 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
-import Navbar from "./components/Navbar";
-import Jumbotron from "./components/Jumbotron/Jumbotron";
 import Footer from "./components/Footer/Footer";
 
 import { withUser, update } from "./services/withUser";
@@ -46,9 +44,6 @@ class App extends Component {
       <Router>
       <MuiThemeProvider>
         <Fragment>
-        
-
-          
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/products" component={ProductPage} />
@@ -58,6 +53,7 @@ class App extends Component {
             <Route exact path="/create" component={CreateAccountPage} />
             <Route component={NotFoundPage} />
           </Switch>
+          <Footer />
         </Fragment>
       </MuiThemeProvider>
     </Router>
