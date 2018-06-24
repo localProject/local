@@ -8,7 +8,13 @@ const Textarea = props => (
                 <form>
                     <div className="form-group">
                         <label for="{props.label}">{props.label}</label>
-                        <textarea className="form-control area-input" rows="3" />
+                        <textarea 
+                        className="form-control area-input" 
+                        rows="3"
+                        name={props.name}
+                        value={props.value}
+                        onChange={props.handleInputChange}
+                        />
                     </div>   
                 </form>
             </div>

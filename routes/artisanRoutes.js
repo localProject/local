@@ -1,9 +1,6 @@
-// const db = require("../models");
+const router = require("express").Router();
 
-// module.exports = app => {
-//     // updating artisan information
-//     // path will likely need changing
-//     db.Artisan.update("/artisan/:id", (req, res) => {
-        
-//     })
-// };
+// require models
+const db = require("../models");
+
+//
