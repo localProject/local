@@ -4,11 +4,15 @@ import Input from "../Input";
 import Combobox from "../Combobox";
 import Textarea from "../Textarea";
 // import UploadPhoto from "../UploadPhoto/UploadPhoto";
-import style from "styled-components";
+import styled from "styled-components";
 import axios from "axios";
 import {searchByRegion, searchByCategory, searchByCounty} from "../Combobox/searchOptions";
 
 // change width of Combobox for this page only
+const StyledCombo = styled.div`
+    width: 55%;
+    margin: auto;
+`;
 
 class ArtisanContainer extends Component {
 
@@ -70,19 +74,22 @@ class ArtisanContainer extends Component {
                 </div>
                 <div className="row">
                     <div className="col-sm">
-                        <Combobox 
-                        label="County"
-                        data={searchByCounty}
-                        />
+                        <StyledCombo>
+                            <Combobox 
+                            label="County"
+                            data={searchByCounty}
+                            />                        
+                        </StyledCombo>
                     </div>
-
                 </div>
                 <div className="row">
                     <div className="col-sm">
-                        <Combobox 
-                        label="Region"
-                        data={searchByRegion}
-                        />  
+                        <StyledCombo>
+                            <Combobox 
+                            label="Region"
+                            data={searchByRegion}
+                            /> 
+                        </StyledCombo>
                     </div>
                 </div>
                 <div className="row">
@@ -114,10 +121,12 @@ class ArtisanContainer extends Component {
                 </div>
                 <div className="row">
                     <div className="col-sm">
-                        <Combobox 
-                        label="Category"
-                        data={searchByCategory}
-                        />
+                        <StyledCombo>
+                            <Combobox 
+                            label="Category"
+                            data={searchByCategory}
+                            />                    
+                        </StyledCombo>
                     </div>
                 </div>
                 <div className="row">
