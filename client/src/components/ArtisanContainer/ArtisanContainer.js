@@ -1,37 +1,75 @@
 import React, {Component} from "react";
 import "./ArtisanContainer.css";
-import Input from "../Input/Input";
-import Combobox from "../Combobox/Combobox";
-import Textarea from "../Textarea/Textarea";
+import Input from "../Input";
+import Combobox from "../Combobox";
+import Textarea from "../Textarea";
 // import UploadPhoto from "../UploadPhoto/UploadPhoto";
+import style from "styled-components";
 import {searchByRegion, searchByCategory, searchByCounty} from "../Combobox/searchOptions";
 
+// change width of Combobox for this page only
+
 class ArtisanContainer extends Component {
+
+    state = {
+        artisanName: "",
+        address: "",
+        city: "",
+        phone: "",
+        email: "",
+        website: "",
+        category: "",
+        region: "",
+        county: "",
+        about: ""
+    };
+
+    handleInputChange = e => {
+        let {name, value} = e.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    updateArtisanProfile = e => {
+        e.preventDefault();
+        alert("Profile successfully updated!");
+    };
+
     render() {
         return (
             <div className="container artisan-container">
                 <div className="row">
                     <Input 
-                    label="company name"
-                    placeholder="company name"
+                    label="Company Name"
+                    name="artisanName"
+                    value={this.state.artisanName}
+                    placeholder="Company Name"
+                    handleInputChange={this.handleInputChange}
                     />
                 </div>
                 <div className="row">
                     <Input 
-                    label="address"
-                    placeholder="address"
+                    label="Address"
+                    name="address"
+                    value={this.state.address}
+                    placeholder="Address"
+                    handleInputChange={this.handleInputChange}
                     />
                 </div>
                 <div className="row">
                     <Input 
-                    label="city"
-                    placeholder="city"
+                    label="City"
+                    name="city"
+                    value={this.state.city}
+                    placeholder="City"
+                    handleInputChange={this.handleInputChange}
                     />
                 </div>
                 <div className="row">
                     <div className="col-sm">
                         <Combobox 
-                        label="county"
+                        label="County"
                         data={searchByCounty}
                         />
                     </div>
@@ -40,27 +78,42 @@ class ArtisanContainer extends Component {
                 <div className="row">
                     <div className="col-sm">
                         <Combobox 
-                        label="region"
+                        label="Region"
                         data={searchByRegion}
                         />  
                     </div>
                 </div>
                 <div className="row">
                     <Input 
-                    label="phone"
-                    placeholder="phone"
+                    label="Phone"
+                    name="phone"
+                    value={this.state.phone}
+                    placeholder="Phone"
+                    handleInputChange={this.handleInputChange}
                     />
                 </div>
                 <div className="row">
                     <Input 
-                    label="email"
-                    placeholder="email"
+                    label="Email"
+                    name="email"
+                    value={this.state.value}
+                    placeholder="Email"
+                    handleInputChange={this.handleInputChange}
+                    />
+                </div>
+                <div className="row">
+                    <Input 
+                    label="Website"
+                    name="website"
+                    value={this.state.website}
+                    placeholder="URL"
+                    handleInputChange={this.handleInputChange}
                     />
                 </div>
                 <div className="row">
                     <div className="col-sm">
                         <Combobox 
-                        label="category"
+                        label="Category"
                         data={searchByCategory}
                         />
                     </div>
@@ -68,7 +121,10 @@ class ArtisanContainer extends Component {
                 <div className="row">
                     <div className="col-sm">
                         <Textarea 
-                        label="about"
+                        label="About"
+                        name="about"
+                        value={this.state.about}
+                        handleInputChange={this.handleInputChange}
                         />
                     </div>
                 </div>
@@ -84,7 +140,11 @@ class ArtisanContainer extends Component {
                 </div>
                 <div className="row">
                     <div className="col-sm">
-                        <button>Save Changes</button>
+                        <button
+                        onClick={this.updateArtisanProfile}
+                        >
+                            Save Changes
+                        </button>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,14 @@ const Input = props => (
                 <form>
                     <div className="form-group">
                         <label for={props.label}>{props.label}</label>
-                        <input type={props.label} className="form-control text-input" id="input" placeholder={props.placeholder} />
+                        <input
+                        type="text"
+                        className="form-control text-input"
+                        name={props.name}
+                        value={props.value}
+                        placeholder={props.placeholder}
+                        onChange={props.handleInputChange}
+                        />
                     </div>
                 </form>
             </div>
