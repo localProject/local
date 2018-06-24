@@ -14,8 +14,8 @@ import LocalStore from "./pages/LocalStore";
 import ArtisanPage from "./pages/ArtisanPage";
 import NotFoundPage from './pages/NotFoundPage';
 import ProductPage from './pages/ProductPage';
-import FancyBanner from './components/FancyBanner'
-import ItemCardContainer from './components/ItemCardContainer'
+import FancyBanner from './components/FancyBanner';
+import ItemCardContainer from './components/ItemCardContainer';
 //import NotFoundPage from "./pages/NotFoundPage";
 
 class App extends Component {
