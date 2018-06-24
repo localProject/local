@@ -140,16 +140,6 @@ class ArtisanContainer extends Component {
                 </div>
                 <div className="row">
                     <div className="col-sm">
-                        Logo upload
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm">
-                        Manage Items
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm">
                         <button
                         onClick={this.updateArtisanProfile}
                         >
