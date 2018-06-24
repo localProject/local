@@ -5,7 +5,6 @@ import Combobox from "../Combobox";
 import Textarea from "../Textarea";
 // import UploadPhoto from "../UploadPhoto/UploadPhoto";
 import styled from "styled-components";
-import axios from "axios";
 import {searchByRegion, searchByCategory, searchByCounty} from "../Combobox/searchOptions";
 
 // change width of Combobox for this page only
