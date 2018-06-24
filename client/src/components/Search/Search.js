@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Search.css";
-import Combobox from "../Combobox/Combobox";
+import Combobox from "../Combobox";
 import {
   searchBy,
   searchByRegion,

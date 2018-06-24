@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, {Component} from 'react';
-import ArtisanContainer from "../components/ArtisanContainer/ArtisanContainer";
+import ArtisanContainer from "../components/ArtisanContainer";
 // import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 import FancyBanner from '../components/FancyBanner';
+import ActionSearch from "../components/ActionSearch";
 
 class ArtisanPage extends Component {
   state = {
@@ -51,6 +52,7 @@ class ArtisanPage extends Component {
           <div>Hey! I don't recognize you! Register and log in using the link above</div>
         }*/}
         <FancyBanner img='2' gradient='0' height='400px'/>
+        <ActionSearch />
         <ArtisanContainer />
       </div>
     );
