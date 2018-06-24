@@ -5,6 +5,7 @@ import Combobox from "../Combobox";
 import Textarea from "../Textarea";
 // import UploadPhoto from "../UploadPhoto/UploadPhoto";
 import style from "styled-components";
+import axios from "axios";
 import {searchByRegion, searchByCategory, searchByCounty} from "../Combobox/searchOptions";
 
 // change width of Combobox for this page only
@@ -34,6 +35,7 @@ class ArtisanContainer extends Component {
     updateArtisanProfile = e => {
         e.preventDefault();
         alert("Profile successfully updated!");
+
     };
 
     render() {
