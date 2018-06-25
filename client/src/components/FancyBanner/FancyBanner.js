@@ -33,8 +33,7 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
 'height': this.props.height}}>
         <div class="links">
           < Link to='/' class="nav"> Home </Link>
-          <Link to='/products' class="nav"> Products </Link>
-          <div class="nav"> Stores </div>
+          <Link to='/products' class="nav"> Store </Link>
           <div class="nav"> About Us </div>
           
         </div>
@@ -43,7 +42,7 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
           <div class="login-info">
             <div class="username" />
             <span class="pulse-button" />
-            <div class="status">Sign In</div>
+            <Link to="/login" class="status">Sign In</Link>
 
             <div class="manage "> Manage Account</div>
           </div>
