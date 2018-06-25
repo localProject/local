@@ -84,7 +84,12 @@ class ItemManagement extends Component {
                             <Combobox data={this.state.categoryChoices}/>
 
                             <div className="dropzone">
-                                <Dropzone onDrop={this.onDrop.bind(this)}>
+                                {/* <Dropzone onDrop={this.onDrop.bind(this)}> */}
+                                <Dropzone onDrop={(files) => {
+                                    this.setState({files:[...this.state.files, files[0]]});
+                                    console.log(files);
+                                    console.log(this.state.files);
+                                }}>
                                     <p>Drag a picture here.</p>
                                 </Dropzone>
                             </div>
