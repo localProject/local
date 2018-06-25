@@ -5,10 +5,12 @@ import ArtisanContainer from "../components/ArtisanContainer";
 import { withUser } from '../services/withUser';
 import FancyBanner from '../components/FancyBanner';
 import ActionSearch from "../components/ActionSearch";
+import TestContainer from "../components/TestContainer";
 
 class ArtisanPage extends Component {
   state = {
-    stuff: null
+    stuff: null,
+    actionChosen: ""
   }
   componentDidMount() {
     // only try loading stuff if the user is logged in.
@@ -30,11 +32,29 @@ class ArtisanPage extends Component {
         });
       });
   }
-  render() {
-    const { user } = this.props; // get the user prop from props
-    const { stuff } = this.state; // get stuff from state
+
+  renderThisComponent = (action = "") => {
+    this.setState({actionChosen: action}, () => {
+      console.log(this.state.actionChosen)
+    });
+  };
+
+    render() {
+
+      {/*const { user } = this.props; // get the user prop from props*/}
+      {/*const { stuff } = this.state; // get stuff from state*/}
+
+      let containerRendered;
+      if (this.state.actionChosen == "Update Profile") {
+        containerRendered = <ArtisanContainer />
+      } else if (this.state.actionChosen == "Manage Inventory") {
+        containerRendered = <TestContainer />
+      } else {
+        containerRendered = <h2>Please choose an option to do something.</h2>
+      }
 
     return (
+
       <div>
         {/* boilerplate code for logging in
         {user && stuff &&
@@ -52,8 +72,8 @@ class ArtisanPage extends Component {
           <div>Hey! I don't recognize you! Register and log in using the link above</div>
         }*/}
         <FancyBanner img='2' gradient='0' height='400px'/>
-        <ActionSearch />
-        <ArtisanContainer />
+        <ActionSearch render={this.renderThisComponent} />
+        {containerRendered}
       </div>
     );
   }
