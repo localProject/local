@@ -1,129 +1,115 @@
 import React, {Component} from "react";
 import axios from "axios";
-import "./ItemMangement.css";
+import Dropzone from 'react-dropzone';
+import Combobox from '../Combobox';
+import ItemCard from '../ItemCard';
 
-class ItemMangement extends Component {
-    let dropArea = document.getElementById("drop-area");
+class ItemManagement extends Component {
 
-    // Prevent default drag behaviors
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, preventDefaults, false)   
-        document.body.addEventListener(eventName, preventDefaults, false)
-    })
 
-    // Highlight drop area when item is dragged over it
-    ['dragenter', 'dragover'].forEach(eventName => {
-        dropArea.addEventListener(eventName, highlight, false)
-    })
-
-    ['dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, unhighlight, false)
-    })
-
-    // Handle dropped files
-    dropArea.addEventListener('drop', handleDrop, false)
-
-    function preventDefaults (e) {
-        e.preventDefault()
-        e.stopPropagation()
+    constructor() {
+        super()
+        this.state =    { files: [],
+                            categoryChoices: [
+                                "Art", "Bakery", "Beer", "Coffee", "Condiments", "Dairy",
+                                "Flowers", "Furniture", "Gluten-Free", "Health & Beauty", "Home",
+                                "Jewelry", "Meat", "Novelty", "Organic", "Other Beverages", "Pets",
+                                "Pottery", "Produce", "Seafood", "Snacks", "Specialty Foods", "Spirits",
+                                "Sweets", "Textiles", "Wine"
+                            ], 
+                            productName:"",
+                            productPrice:"",
+                            productURL:""
+                        }
+    }
+    
+    onDrop(files) {
+        this.setState({
+          files
+        });
+        console.log(this.state.files);
+        this.uploadFiles(this.state.files)
     }
 
-    function highlight(e) {
-        dropArea.classList.add('highlight')
+    uploadFiles(files) {
+        console.log(`got it`)
+        console.log(files);
+        axios.post('/upload', {
+            upl: files
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
-    function unhighlight(e) {
-        dropArea.classList.remove('active')
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+        [name]: value
+        });
+        console.log(this.state)
     }
 
-    function handleDrop(e) {
-        var dt = e.dataTransfer
-        var files = dt.files
-        handleFiles(files)
-    }
+    
+      render() {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-8">    
+                        <section>
+                            <div className="form-group">
+                                <label>Product Name:</label><br/>
+                                <input
+                                    type="text"
+                                    placeholder="Product Name"
+                                    name="productName"
+                                    value={this.state.productName}
+                                    onChange={this.handleInputChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label>Price (USD, including shipping):</label><br/>
+                                <input
+                                    type="text"
+                                    placeholder="Product Price"
+                                    name="productPrice"
+                                    value={this.state.productPrice}
+                                    onChange={this.handleInputChange}
+                                />
+                            </div>
+                            
+                            <Combobox data={this.state.categoryChoices}/>
 
-    let uploadProgress = []
-    let progressBar = document.getElementById('progress-bar')
-
-    function initializeProgress(numFiles) {
-        progressBar.value = 0
-        uploadProgress = []
-
-        for(let i = numFiles; i > 0; i--) {
-            uploadProgress.push(0)
-        }
-    }
-
-    function updateProgress(fileNumber, percent) {
-        uploadProgress[fileNumber] = percent
-        let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length
-        console.debug('update', fileNumber, percent, total)
-        progressBar.value = total
-    }
-
-    function handleFiles(files) {
-        files = [...files]
-        initializeProgress(files.length)
-        files.forEach(uploadFile)
-        files.forEach(previewFile)
-    }
-
-    function previewFile(file) {
-        let reader = new FileReader()
-        reader.readAsDataURL(file)
-        reader.onloadend = function() {
-            let img = document.createElement('img')
-            img.src = reader.result
-            document.getElementById('gallery').appendChild(img)
-        }
-    }
-
-
-    function uploadFile(file, i) {
-        var url = '/upload'
-        var xhr = new XMLHttpRequest()
-        var formData = new FormData()
-        xhr.open('POST', url, true)
-        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
-
-        // Update progress (can be used to show progress indicator)
-        xhr.upload.addEventListener("progress", function(e) {
-            updateProgress(i, (e.loaded * 100.0 / e.total) || 100)
-        })
-
-        xhr.addEventListener('readystatechange', function(e) {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-            updateProgress(i, 100) // <- Add this
-            console.log(`uploaded`)
-            }
-            else if (xhr.readyState == 4 && xhr.status != 200) {
-            // Error. Inform the user
-            }
-        })
-
-        // formData.append('upload_preset', 'ujpu6gyk')
-        formData.append('upl', file)
-        xhr.send(formData)
-    };
-
-
-
-
-    render() { return (
-        <div>
-           <form method="post" enctype="multipart/form-data" action="/upload">
-                <div id="drop-area">
-                    <form className="my-form">
-                        <p>Upload a file by dragging and dropping onto the dashed region</p>
-                        <input type="file" name="upl" id="fileElem" multiple accept="image/*" onchange={this.handleFiles(this.files)}/>
-                    </form>
-                    <progress id="progress-bar" max={100} value={0}> </progress>
-                    <div id="gallery"></div>
+                            <div className="dropzone">
+                                <Dropzone onDrop={this.onDrop.bind(this)}>
+                                    <p>Drag a picture here.</p>
+                                </Dropzone>
+                            </div>
+                            <aside>
+                                <h3>Dropped files</h3>
+                                <ul>
+                                    {
+                                        this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+                                    }
+                                </ul>
+                            </aside>
+                            <button onClick={this.uploadFiles}>
+                                Submit changes
+                            </button>
+                        </section>
+                    </div>
+                    <div className="col-md-4">
+                        <h1>Item will display as:</h1>
+                        <ItemCard price={this.productPrice} name={this.productName} company={`the company`}/>
+                    </div>    
                 </div>
-            </form> 
-        </div>
-    )}
+            </div>
+        );
+      }
 
 }
 
-export default ItemMangement;
+export default ItemManagement;
