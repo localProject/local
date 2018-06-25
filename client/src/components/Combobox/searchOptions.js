@@ -38,5 +38,5 @@ export const searchByCounty = [
 ];
 
 export const accountActions = [
-    "Update Profile Information", "Manage Inventory"
+    "Update Profile", "Manage Inventory"
 ];

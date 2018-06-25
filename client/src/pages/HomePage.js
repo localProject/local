@@ -11,7 +11,6 @@ import FancyBanner from "../components/FancyBanner";
 
 class HomePage extends Component {
   state = {
-    stuff: null,
     artisans: []
   };
 

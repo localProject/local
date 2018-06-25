@@ -11,6 +11,19 @@ const StyledCombo = styled.div`
 `;
 
 class ActionSearch extends Component {
+    state = {
+        action: "",
+        chosenAction:""
+    };
+
+    chooseThisAction = e => {
+        let action = e.target.value;
+        this.setState({action});
+    };
+
+    handleClick = () => {
+        this.props.render(this.state.action);
+    };
 
     render () {
         return (
@@ -26,9 +39,13 @@ class ActionSearch extends Component {
                             <StyledCombo>
                                 <Combobox 
                                 data={accountActions}
+                                handleChange={this.chooseThisAction}
                                 />
                             </StyledCombo>
-                            <button>Go</button>
+                            <button
+                            onClick={this.handleClick}
+                            disabled={!this.state.action}
+                            >Go</button>
                         </div>
                     </div>
                     <hr />
