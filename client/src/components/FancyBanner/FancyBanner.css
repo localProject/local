@@ -52,7 +52,7 @@ box-sizing: border-box;
   background-color: white;
 color:black;
   width: 200px;
-  height: 70px;
+  height: 80px;
  display:grid;
  grid-template:
     ' image sign ' 1fr
