@@ -47,6 +47,7 @@ module.exports = (app) => {
   // This will cause the User record to be available on each authenticated request via the req.user property.
   passport.deserializeUser(function (userId, done) {
     db.User.findById(userId)
+      .populate("artisan")
       .then(function (user) {
         done(null, user);
       })

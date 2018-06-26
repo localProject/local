@@ -18,15 +18,19 @@ class ProductPage extends Component {
     render() {
         return (
             <div>
-                <FancyBanner height='400px' img='0' gradient='1'/>
-            <div class="card-container-header"
-            style={{
-               'margin-top': '60px',
-               'margin-left': '70px',
-               'margin-bottom': '15px',
-               'font-size': '20px'
-            
-        }}
+                <FancyBanner
+                height='400px'
+                img='0'
+                gradient='1'
+                subtitle="Browse the local goods."
+                />
+                <div class="card-container-header"
+                style={{
+                'margin-top': '60px',
+                'margin-left': '70px',
+                'margin-bottom': '15px',
+                'font-size': '20px'
+                }}
                 >Featured Store: Will's Goods</div>
            <ItemCardContainer/>
            </div>

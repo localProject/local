@@ -30,11 +30,17 @@ class FancyBanner extends Component {
       displayUser = (
         <div>
           <div class="status">{this.props.user.username}</div>
+          <div>{this.props.user.artisan.artisanName}</div>
           <Link to="/artisan" class="manage">Manage Account</Link>
         </div>
       )
     } else {
-      displayUser = <Link to="/login" class="status">Sign In</Link>
+      displayUser = (
+        <div>
+          <Link to="/login" class="status">Sign In</Link>
+          <div class="manage">Welcome, Guest!</div>
+        </div>
+      )
     }
 
       return(
@@ -45,10 +51,10 @@ class FancyBanner extends Component {
 no-repeat scroll center center/cover border-box , ${this.state.gradient[this.props.gradient]}`,
 'height': this.props.height}}>
         <div class="links">
-          < Link to='/' class="nav"> Home </Link>
+          <Link to='/' class="nav"> Home </Link>
 
-          <Link to='/products' class="nav"> Stores </Link>
-          <Link to='/about' class="nav"> About Us </Link>
+          <Link to='/products' class="nav"> Store </Link>
+          <Link to='/about' class="nav"> About </Link>
           </div>
         
         <div class="account">
@@ -62,7 +68,7 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
 
         <div class="info">
           <div class="about">local.</div>
-          <div class="about small">Bringing local goods to global consumers.</div>
+          <div class="about small">{this.props.subtitle}</div>
         </div>
       </div>
       <div class="curve-bottom-1" />
@@ -74,7 +80,3 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
 };
 
 export default withUser(FancyBanner);
-
-
-
-  
