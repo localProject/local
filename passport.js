@@ -64,6 +64,7 @@ module.exports = (app) => {
     const errorMsg = 'Invalid username or password';
 
     db.User.findOne({ username })
+      .populate("artisan")
       .then(user => {
         // if no matching user was found...
         if (!user) {
