@@ -11,6 +11,11 @@ const ItemSchema = new Schema({
         trim: true
     },
 
+    artisanID: {
+        type: String,
+        trim: true
+    },
+
     img: {
         type: String,
         trim: true
