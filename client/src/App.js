@@ -50,7 +50,7 @@ class App extends Component {
             <Route exact path="/store" component={LocalStore} />
             <Route exact path="/artisan" component={ArtisanPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/create" component={CreateAccountPage} />
+            <Route exact path="/create/:company?" component={CreateAccountPage} />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />

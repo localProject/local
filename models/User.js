@@ -25,9 +25,9 @@ const UserSchema = new Schema({
     type: String
   },
 
-  userType: {
-    type: String,
-    required: true
+  artisan: {
+    type: Schema.Types.ObjectId,
+    ref: "Artisan"
   }
 });
 
