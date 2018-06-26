@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "./ArtisanContainer.css";
+import {withUser} from "../../services/withUser";
 import Input from "../Input";
 import Combobox from "../Combobox";
 import Textarea from "../Textarea";
@@ -16,16 +17,15 @@ const StyledCombo = styled.div`
 class ArtisanContainer extends Component {
 
     state = {
-        artisanName: "",
-        address: "",
-        city: "",
-        phone: "",
-        email: "",
-        website: "",
-        category: "",
-        region: "",
-        county: "",
-        about: ""
+        artisanName: this.props.user.artisan.artisanName,
+        address: this.props.user.artisan.address,
+        city: this.props.user.artisan.city,
+        phone: this.props.user.artisan.phone,
+        email: this.props.user.artisan.email,
+        website: this.props.user.artisan.website,
+        category: this.props.user.artisan.category,
+        region: this.props.user.artisan.region,
+        county: this.props.user.artisan.county
     };
 
     handleInputChange = e => {
@@ -77,6 +77,7 @@ class ArtisanContainer extends Component {
                             <Combobox 
                             label="County"
                             data={searchByCounty}
+                            value={this.state.county}
                             />                        
                         </StyledCombo>
                     </div>
@@ -87,6 +88,7 @@ class ArtisanContainer extends Component {
                             <Combobox 
                             label="Region"
                             data={searchByRegion}
+                            value={this.state.region}
                             /> 
                         </StyledCombo>
                     </div>
@@ -124,18 +126,9 @@ class ArtisanContainer extends Component {
                             <Combobox 
                             label="Category"
                             data={searchByCategory}
+                            value={this.state.category}
                             />                    
                         </StyledCombo>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm">
-                        <Textarea 
-                        label="About"
-                        name="about"
-                        value={this.state.about}
-                        handleInputChange={this.handleInputChange}
-                        />
                     </div>
                 </div>
                 <div className="row">
@@ -152,4 +145,4 @@ class ArtisanContainer extends Component {
     }
 }
 
-export default ArtisanContainer;
+export default withUser(ArtisanContainer);
