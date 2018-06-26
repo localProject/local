@@ -33,11 +33,10 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
 'height': this.props.height}}>
         <div class="links">
           < Link to='/' class="nav"> Home </Link>
-          <Link to='/products' class="nav"> Products </Link>
-          <div class="nav"> Stores </div>
-          <div class="nav"> About Us </div>
+          <Link to='/products' class="nav"> Stores </Link>
+          <Link to='/about' class="nav"> About Us </Link>
+          </div>
           
-        </div>
         <div class="account">
           <div class="profile-pic" />
           <div class="login-info">
@@ -52,13 +51,13 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
         <div class="info">
           <div class="about">local.</div>
           <div class="about small">Bringing local goods to global consumers.</div>
-          <div class="create">Create a store</div>
         </div>
       </div>
       <div class="curve-bottom-1" />
-    </div>
+      </div>
     </div>
       );
+
   };
 };
 
