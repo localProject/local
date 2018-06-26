@@ -5,11 +5,9 @@ import Combobox from '../Combobox';
 import ItemCard from '../ItemCard';
 
 class ItemManagement extends Component {
-
-
     constructor() {
         super()
-        this.state =    { files: [],
+        this.state =    { files: "",
                             categoryChoices: [
                                 "Art", "Bakery", "Beer", "Coffee", "Condiments", "Dairy",
                                 "Flowers", "Furniture", "Gluten-Free", "Health & Beauty", "Home",
@@ -21,21 +19,26 @@ class ItemManagement extends Component {
                             productPrice:"",
                             productURL:""
                         }
+
+
+        this.uploadFiles=this.uploadFiles.bind(this)                            
     }
     
-    onDrop(files) {
-        this.setState({
-          files
-        });
-        console.log(this.state.files);
-        this.uploadFiles(this.state.files)
+    dropped(myfiles) {
+        let myfile = myfiles[0]
+        // this.setState(prevState => ({
+        //     files: [...prevState.files, myfiles]
+        // }))
+        console.log(this);
+        console.log(this.state);
+        this.setState({files:myfile});
+        console.log(myfile);
+        console.log(typeof this.state.files);
     }
 
-    uploadFiles(files) {
-        console.log(`got it`)
-        console.log(files);
+    uploadFiles() {
         axios.post('/upload', {
-            upl: files
+            upl: this.state.files
           })
           .then(function (response) {
             console.log(response);
@@ -43,16 +46,8 @@ class ItemManagement extends Component {
           .catch(function (error) {
             console.log(error);
           });
+        this.setState({ files: [] });
     }
-
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-        [name]: value
-        });
-        console.log(this.state)
-    }
-
     
       render() {
         return (
@@ -82,24 +77,16 @@ class ItemManagement extends Component {
                             </div>
                             
                             <Combobox data={this.state.categoryChoices}/>
-
                             <div className="dropzone">
                                 {/* <Dropzone onDrop={this.onDrop.bind(this)}> */}
                                 <Dropzone onDrop={(files) => {
-                                    this.setState({files:[...this.state.files, files[0]]});
-                                    console.log(files);
-                                    console.log(this.state.files);
+                                    this.dropped(files)
                                 }}>
                                     <p>Drag a picture here.</p>
                                 </Dropzone>
                             </div>
                             <aside>
-                                <h3>Dropped files</h3>
-                                <ul>
-                                    {
-                                        this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
-                                    }
-                                </ul>
+                                <h3>Dropped files: {this.state.files.name}</h3>
                             </aside>
                             <button onClick={this.uploadFiles}>
                                 Submit changes

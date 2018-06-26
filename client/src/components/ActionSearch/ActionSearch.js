@@ -45,7 +45,9 @@ class ActionSearch extends Component {
                             <button
                             onClick={this.handleClick}
                             disabled={!this.state.action}
-                            >Go</button>
+                            >
+                                Go!
+                            </button>
                         </div>
                     </div>
                     <hr />
