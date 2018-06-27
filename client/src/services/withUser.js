@@ -25,9 +25,13 @@ export const withUser = Component => {
     componentDidMount() {
       this.unsubscribe = subscribe(this.forceUpdate.bind(this));
     }
+    clearUser = () => {
+      this.setState({});
+      console.log("Cleared user data");
+    }
     render() {
       const newProps = { ...this.props, user: state };
-      return <Component {...newProps} />;
+      return <Component {...newProps} clearUser = {this.clearUser} />;
     }
     componentWillUnmount() {
       this.unsubscribe();
