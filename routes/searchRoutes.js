@@ -25,4 +25,5 @@ router.route("/artisans/:type/:search").get((req, res) => {
     });
 });
 
+
 module.exports = router;
