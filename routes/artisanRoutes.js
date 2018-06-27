@@ -14,12 +14,4 @@ router.route("/artisans/:id").put((req, res) => {
 });
 
 
-router.route("/upload").post((req,res) => {
-    db.Item.find({itemName:req.itemName})
-        .then(dbItem => {
-            console.log(res);
-        })
-        .catch(err => {
-            res.json(err)
-        });
-})
+module.exports = router;
