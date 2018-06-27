@@ -1,8 +1,9 @@
+import axios from "axios";
 import React, { Component } from "react";
 import "./FancyBanner.css";
-import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import {withUser} from "../../services/withUser";
+import {update} from "../../services/withUser";
 
 class FancyBanner extends Component {
   state= {
@@ -23,22 +24,36 @@ class FancyBanner extends Component {
   handleClick = () => {
        this.props.history.push('/login');
   };
+
+  handleLogout = event => {
+    event.preventDefault();
+    axios.delete("/api/auth")
+      .then(() => {
+        this.props.clearUser();
+        update(null);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
     
   render() {
     let displayUser;
     if (this.props.user) {
       displayUser = (
         <div>
-          <div class="status">{this.props.user.username}</div>
-          <div>{this.props.user.artisan.artisanName}</div>
-          <Link to="/artisan" class="manage">Manage Account</Link>
+          <div class="status">Welcome, {this.props.user.username}!</div>
+          <div class="manage">
+            <Link to="/artisan">Manage Account</Link>
+            <button class="logout" onClick={this.handleLogout}>Logout</button>
+          </div>
         </div>
       )
     } else {
       displayUser = (
         <div>
           <Link to="/login" class="status">Sign In</Link>
-          <div class="manage">Welcome, Guest!</div>
+          <div class="manage">Welcome, guest!</div>
         </div>
       )
     }
@@ -58,7 +73,7 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
           </div>
         
         <div class="account">
-          <div class="profile-pic" />
+          {/*<div class="profile-pic" />*/}
           <div class="login-info">
             <div class="username" />
             <span class="pulse-button" />
@@ -75,7 +90,6 @@ no-repeat scroll center center/cover border-box , ${this.state.gradient[this.pro
       </div>
     </div>
       );
-
   };
 };
 

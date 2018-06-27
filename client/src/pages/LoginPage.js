@@ -42,6 +42,7 @@ class LoginPage extends Component {
       });
     });
   }
+
   render() {
     const { error } = this.state;
 
