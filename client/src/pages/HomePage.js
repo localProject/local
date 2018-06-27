@@ -38,8 +38,8 @@ class HomePage extends Component {
       <div>
         <FancyBanner img="2" gradient="0" height="400px" />
         <MapContainer
-          google={this.props.google}
-          artisans={this.state.artisans}
+        // google={this.props.google}
+        // artisans={this.state.artisans}
         />
         <br />
         <Search search={this.searchForArtisans} />
