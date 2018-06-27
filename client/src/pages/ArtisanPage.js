@@ -49,7 +49,7 @@ class ArtisanPage extends Component {
       if (this.state.actionChosen == "Update Profile") {
         containerRendered = <ArtisanContainer />
       } else if (this.state.actionChosen == "Manage Inventory") {
-        containerRendered = <RouteTester/>
+        containerRendered = <ItemManagement/>
       } else {
         containerRendered = <h2>Please choose an option to do something.</h2>
       }
