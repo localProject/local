@@ -4,7 +4,7 @@ const router = require("express").Router();
 const db = require("../models");
 
 
-router.route("api/vendoritems/all/:vendorID").get((req, res) => {
+router.route("/api/vendoritems/all/:vendorID").get((req, res) => {
   db.Items.find({ artisanID: req.params.vendorID })
     .then(dbItems => {
       res.json(dbItems);
@@ -14,7 +14,7 @@ router.route("api/vendoritems/all/:vendorID").get((req, res) => {
     });
 });
 
-router.route("api/vendoritems/:itemID").get((req, res) => {
+router.route("/api/vendoritems/:itemID").get((req, res) => {
   db.Items.findOne({_id:req.params.itemID})
     .then(dbItem => {
       res.json(dbItem);
@@ -24,7 +24,7 @@ router.route("api/vendoritems/:itemID").get((req, res) => {
     });
 });
 
-router.route("api/vendoritems/:itemID").put((req, res) => {
+router.route("/api/vendoritems/:itemID").put((req, res) => {
   db.Items.findOneAndUpdate({_id:req.body._id},{
     itemName:req.body.itemName,
     img:req.body.img,
@@ -39,8 +39,9 @@ router.route("api/vendoritems/:itemID").put((req, res) => {
     });
 });
 
-router.route("api/vendoritems/addnew").post((req,res) => {
-  const newItem = new Items(req.body);
+router.route("/api/vendoritems/addnew").post((req,res) => {
+  const newItem = req.body;
+  console.log(newItem)
   console.log('got here');
   db.Items.create(newItem)
     .then(res.json({message:'item added'}))
