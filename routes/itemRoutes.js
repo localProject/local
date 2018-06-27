@@ -44,7 +44,7 @@ router.route("/api/vendoritems/addnew").post((req,res) => {
   console.log(newItem)
   console.log('got here');
   db.Items.create(newItem)
-    .then(res.json({message:'item added'}))
+    .then(() => res.json({message:'item added'}))
     .catch(err=> {
       res.json(err);
     })

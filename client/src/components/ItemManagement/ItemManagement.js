@@ -3,6 +3,7 @@ import axios from "axios";
 import Dropzone from 'react-dropzone';
 import Combobox from '../Combobox';
 import ItemCard from '../ItemCard';
+import {withUser} from "../../services/withUser";
 
 class ItemManagement extends Component {
     constructor() {
