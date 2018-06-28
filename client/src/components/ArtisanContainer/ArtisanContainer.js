@@ -3,8 +3,7 @@ import "./ArtisanContainer.css";
 import {withUser} from "../../services/withUser";
 import Input from "../Input";
 import Combobox from "../Combobox";
-import Textarea from "../Textarea";
-// import UploadPhoto from "../UploadPhoto/UploadPhoto";
+import axios from "axios";
 import styled from "styled-components";
 import {searchByRegion, searchByCategory, searchByCounty} from "../Combobox/searchOptions";
 
@@ -33,12 +32,19 @@ class ArtisanContainer extends Component {
         this.setState({
             [name]: value
         });
+
     };
 
     updateArtisanProfile = e => {
         e.preventDefault();
+        let id = this.props.user.artisan._id;
+        let updatedInfo = this.state;
+        axios.put(`/api/artisans/${id}`, {updatedInfo})
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
         alert("Profile successfully updated!");
-
     };
 
     render() {
@@ -77,7 +83,9 @@ class ArtisanContainer extends Component {
                             <Combobox 
                             label="County"
                             data={searchByCounty}
+                            name="county"
                             value={this.state.county}
+                            handleChange={this.handleInputChange}
                             />                        
                         </StyledCombo>
                     </div>
@@ -88,7 +96,9 @@ class ArtisanContainer extends Component {
                             <Combobox 
                             label="Region"
                             data={searchByRegion}
+                            name="region"
                             value={this.state.region}
+                            handleChange={this.handleInputChange}
                             /> 
                         </StyledCombo>
                     </div>
@@ -126,7 +136,9 @@ class ArtisanContainer extends Component {
                             <Combobox 
                             label="Category"
                             data={searchByCategory}
+                            name="category"
                             value={this.state.category}
+                            handleChange={this.handleInputChange}
                             />                    
                         </StyledCombo>
                     </div>
