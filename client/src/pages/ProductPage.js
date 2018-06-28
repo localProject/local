@@ -20,8 +20,8 @@ class ProductPage extends Component {
             <div>
                 <FancyBanner
                 height='400px'
-                img='0'
-                gradient='1'
+                img='2'
+                gradient='0'
                 subtitle="Browse the local goods."
                 />
                 <div class="card-container-header"
