@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import FancyBanner from '../components/FancyBanner';
 
 class CreateAccountPage extends Component {
   state = {
@@ -57,42 +58,52 @@ class CreateAccountPage extends Component {
     const { error } = this.state;
 
     return (
-      <Grid fluid>
-        <Row>
-          <Col xs={6} xsOffset={3}>
-            <form onSubmit={this.handleLogin}>
-              <h1>Create Account</h1>
-              {error &&
-                <div>
-                  {error}
-                </div>
-              }
+      <div>
+        <FancyBanner 
+        img="2"
+        gradient="0"
+        height="400px"
+        subtitle="Create a local. account."
+        />
+        <div className="container">
+          <form onSubmit={this.handleLogin}>
+            {error &&
               <div>
+                {error}
+              </div>
+            }
+            <div className="row">
+              <div className="col-sm">
                 <TextField
-                  name="username"
-                  hintText="Username"
-                  floatingLabelText="Username"
-                  onChange={this.handleInputChanged}
+                name="username"
+                hintText="Username"
+                floatingLabelText="Username"
+                onChange={this.handleInputChanged}
                 />
               </div>
-              <div>
+            </div>
+            <div className="row">
+              <div className="col-sm">
                 <TextField
-                  name="password"
-                  hintText="Password"
-                  floatingLabelText="Password"
-                  type="password"
-                  onChange={this.handleInputChanged}
+                name="password"
+                hintText="Password"
+                floatingLabelText="Password"
+                type="password"
+                onChange={this.handleInputChanged}
                 />
               </div>
-              <div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-sm">
                 <RaisedButton primary type="submit">
-                  Create Account
+                  Create
                 </RaisedButton>
               </div>
-            </form>
-          </Col>
-        </Row>
-      </Grid>
+            </div>
+          </form>
+        </div>
+      </div>
     );
   }
 }
