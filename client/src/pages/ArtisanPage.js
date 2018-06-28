@@ -51,28 +51,18 @@ class ArtisanPage extends Component {
       } else if (this.state.actionChosen == "Manage Inventory") {
         containerRendered = <ItemManagement user={this.props.user}/>
       } else {
-        containerRendered = <h2>Please choose an option to do something.</h2>
+        containerRendered = <center><h2>Please choose an option to do something.</h2></center>
       }
 
     return (
 
       <div>
-        {/* boilerplate code for logging in
-        {user && stuff &&
-          <div>
-            Welcome back, {user.username}!
-          <List>
-           {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
-          </List>
-          </div>
-        }
-        {user && !stuff &&
-          <div>Hold on, looking for your stuff...</div>
-        }
-        {!user &&
-          <div>Hey! I don't recognize you! Register and log in using the link above</div>
-        }*/}
-        <FancyBanner img='2' gradient='0' height='400px'/>
+        <FancyBanner
+        img='2'
+        gradient='0'
+        height='400px'
+        subtitle="A place for artisans to call home."
+        />
         <ActionSearch render={this.renderThisComponent} />
         {containerRendered}
       </div>
