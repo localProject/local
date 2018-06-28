@@ -14,7 +14,7 @@ router.route("/artisans").get((req, res) => {
     });
 });
 
-//art/booty/wobble
+
 router.route("/artisans/:type/:search").get((req, res) => {
   db.Artisan.find({ [req.params.type]: req.params.search })
     .then(dbArtisan => {
@@ -24,5 +24,6 @@ router.route("/artisans/:type/:search").get((req, res) => {
       res.json(err);
     });
 });
+
 
 module.exports = router;

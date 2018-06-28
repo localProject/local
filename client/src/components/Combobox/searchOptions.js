@@ -36,3 +36,7 @@ export const searchByCounty = [
     "Vance", "Wake", "Warren", "Washington", "Watauga",
     "Wayne", "Wilkes", "Wilson", "Yadkin", "Yancey"
 ];
+
+export const accountActions = [
+    "Update Profile", "Manage Inventory"
+];

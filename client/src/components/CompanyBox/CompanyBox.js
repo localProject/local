@@ -17,10 +17,8 @@ const CompanyBox = ({company}) => (
         </div>
         {/*more information*/}
         <div className="col-sm">
-            <a href={company.website} target="_blank">Website</a><br />
-            <button onClick={() => company.triggerModal(company.id)}>About</button>
+            {company.website ? <a href={company.website} target="_blank">Website</a> : ""}
         </div>
-        {/*modal to trigger about = company.modal*/}
     </div>
 );
 

@@ -1,9 +1,17 @@
-// const db = require("../models");
+const router = require("express").Router();
 
-// module.exports = app => {
-//     // updating artisan information
-//     // path will likely need changing
-//     db.Artisan.update("/artisan/:id", (req, res) => {
-        
-//     })
-// };
+// require models
+const db = require("../models");
+
+// update profile of artisan
+router.route("/artisans/:id").put((req, res) => {
+    db.Artisan.findByIdAndUpdate({_id: req.params.id})
+    .then(dbArtisan => {
+        res.json(dbArtisan);
+    }).catch(err => {
+        res.json(err);
+    });
+});
+
+
+module.exports = router;

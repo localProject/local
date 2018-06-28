@@ -11,7 +11,6 @@ import FancyBanner from "../components/FancyBanner";
 
 class HomePage extends Component {
   state = {
-    stuff: null,
     artisans: []
   };
 
@@ -36,14 +35,19 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <FancyBanner img="2" gradient="0" height="400px" />
+        <FancyBanner
+        img="2"
+        gradient="0"
+        height="400px"
+        subtitle="Bringing local goods from local artisans to global consumers."
+        />
         <MapContainer
         // google={this.props.google}
         // artisans={this.state.artisans}
         />
         <br />
         <Search search={this.searchForArtisans} />
-        <ArtisanMap google={this.props.google} artisans={this.state.artisans} />
+        {/*<ArtisanMap google={this.props.google} artisans={this.state.artisans} />*/}
         <br />
         <CompanyBoxContainer searchResults={this.state.artisans} />
         <br />

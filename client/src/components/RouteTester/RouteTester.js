@@ -1,11 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
-import Dropzone from 'react-dropzone';
 import Combobox from '../Combobox';
-import ItemCard from '../ItemCard';
-import {withUser} from "../../services/withUser";
 
-class ItemManagement extends Component {
+class RouteTester extends Component {
     constructor() {
         super()
         this.state =    { files: "",
@@ -18,25 +15,14 @@ class ItemManagement extends Component {
                             ], 
                             productName:"",
                             productPrice:"",
-                            productURL:""
+                            productURL:"",
+                            vendorID:"1"
                         }
 
 
         this.uploadFiles=this.uploadFiles.bind(this)                            
     }
     
-    dropped(myfiles) {
-        let myfile = myfiles[0]
-        // this.setState(prevState => ({
-        //     files: [...prevState.files, myfiles]
-        // }))
-        console.log(this);
-        console.log(this.state);
-        this.setState({files:myfile});
-        console.log(myfile);
-        console.log(typeof this.state.files);
-    }
-
     uploadFiles() {
         axios.post('/upload', {
             upl: this.state.files
@@ -49,8 +35,25 @@ class ItemManagement extends Component {
           });
         this.setState({ files: [] });
     }
+
+    addNewItem() {
+        let newItem = {
+            itemName: "test",
+            artisanID:"1",
+            img:"",
+            price:"10",
+            category:"cowbell"
+        }
+        axios.post('/api/vendoritems/addnew', { newItem })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
     
-      render() {
+    render() {
         return (
             <div className="container">
                 <div className="row">
@@ -76,33 +79,21 @@ class ItemManagement extends Component {
                                     onChange={this.handleInputChange}
                                 />
                             </div>
-                            
+                            <label>Item Category</label>
                             <Combobox data={this.state.categoryChoices}/>
-                            <div className="dropzone">
-                                {/* <Dropzone onDrop={this.onDrop.bind(this)}> */}
-                                <Dropzone onDrop={(files) => {
-                                    this.dropped(files)
-                                }}>
-                                    <p>Drag a picture here.</p>
-                                </Dropzone>
-                            </div>
-                            <aside>
-                                <h3>Dropped files: {this.state.files.name}</h3>
-                            </aside>
                             <button onClick={this.uploadFiles}>
                                 Submit changes
                             </button>
+                            <button onClick={this.addNewItem}>
+                                Add New Item
+                            </button>
                         </section>
                     </div>
-                    <div className="col-md-4">
-                        <h1>Item will display as:</h1>
-                        <ItemCard price={this.productPrice} name={this.productName} company={`the company`}/>
-                    </div>    
                 </div>
             </div>
         );
-      }
+    }
 
 }
 
-export default ItemManagement;
+export default RouteTester;
