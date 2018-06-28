@@ -39,7 +39,7 @@ class HomePage extends Component {
         img="2"
         gradient="0"
         height="400px"
-        subtitle="Bringing local goods from local artisans to global consumers."
+        subtitle="Bringing local goods to global consumers."
         />
         <MapContainer
           google={this.props.google}
