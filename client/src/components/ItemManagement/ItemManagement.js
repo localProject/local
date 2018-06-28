@@ -67,7 +67,7 @@ class ItemManagement extends Component {
     }
 
     uploadFiles() {
-        axios.post('/upload', {
+        axios.post('api /upload', {
             upl: this.state.files
           })
           .then(function (response) {
@@ -83,7 +83,11 @@ class ItemManagement extends Component {
         
     }
 
-    clearAllForNewProduct() {
+    clearAllForNewProduct= ()=> {
+        this.setState({productName:"",productPrice:"",productURL:""})
+    }
+
+    submitItemToDatabase() {
 
     }
     
@@ -93,14 +97,19 @@ class ItemManagement extends Component {
                 <div className="row">
                     <div className="col-md-8">   
                         <div className="row">
-                            <div className="col-md-6">  
-                                <Combobox data={this.state.vendorItems.map(item=>item.itemName)}/>
+                            <div className="col-md-8">  
+                                <Combobox 
+                                    label="Choose an existing product to modify:"
+                                    name="productName" 
+                                    data={this.state.vendorItems.map(item=>item.itemName)}
+                                    handleChange={this.handleInputChange}
+                                />
                             </div>
-                            <div className="col-md-2"> 
+                            {/* <div className="col-md-2"> 
                                 <button onClick={this.productSelected}>
                                     Go
                                 </button>
-                            </div>
+                            </div> */}
                             <div className="col-md-4"> 
                                 <button onClick={this.clearAllForNewProduct}>
                                     Add new item
@@ -128,19 +137,19 @@ class ItemManagement extends Component {
                                     onChange={this.handleInputChange}
                                 />
                             </div>
-                            <Combobox data={this.state.categoryChoices}/>
+                            {/* <Combobox data={this.state.categoryChoices}/> */}
                             <div className="dropzone">
                                 {/* <Dropzone onDrop={this.onDrop.bind(this)}> */}
                                 <Dropzone onDrop={(files) => {
                                     this.dropped(files)
                                 }}>
-                                    <p>Drag a picture here to upload</p>
+                                    <p>Drag a picture here to upload or click to browse for a file</p>
                                 </Dropzone>
                             </div>
                             <aside>
                                 <h3>Dropped files: {this.state.files.name}</h3>
                             </aside>
-                            <button onClick={this.uploadFiles}>
+                            <button onClick={this.submitItemToDatabase}>
                                 Submit changes
                             </button>
                         </section>
