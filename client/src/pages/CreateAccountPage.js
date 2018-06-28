@@ -39,7 +39,8 @@ class CreateAccountPage extends Component {
     // post an auth request
     axios.post('/api/users', {
       username,
-      password
+      password,
+      artisan: this.props.match.params.company
     })
       .then(user => {
         // if the response is successful, make them log in

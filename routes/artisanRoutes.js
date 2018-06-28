@@ -12,3 +12,6 @@ router.route("/artisans/:id").put((req, res) => {
         res.json(err);
     });
 });
+
+
+module.exports = router;

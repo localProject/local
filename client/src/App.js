@@ -3,19 +3,15 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
-import Footer from "./components/Footer/Footer";
-
 import { withUser, update } from "./services/withUser";
 
 import CreateAccountPage from "./pages/CreateAccountPage";
 import HomePage from "./pages/HomePage";
+import AboutUsPage from "./pages/AboutUsPage";
 import LoginPage from "./pages/LoginPage";
-import LocalStore from "./pages/LocalStore";
 import ArtisanPage from "./pages/ArtisanPage";
 import NotFoundPage from './pages/NotFoundPage';
 import ProductPage from './pages/ProductPage';
-import FancyBanner from './components/FancyBanner';
-import ItemCardContainer from './components/ItemCardContainer';
 //import NotFoundPage from "./pages/NotFoundPage";
 
 class App extends Component {
@@ -47,13 +43,12 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/products" component={ProductPage} />
-            <Route exact path="/store" component={LocalStore} />
+            <Route exact path="/about" component={AboutUsPage} />
             <Route exact path="/artisan" component={ArtisanPage} />
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/create" component={CreateAccountPage} />
+            <Route exact path="/create/:company?" component={CreateAccountPage} />
             <Route component={NotFoundPage} />
           </Switch>
-          <Footer />
         </Fragment>
       </MuiThemeProvider>
     </Router>

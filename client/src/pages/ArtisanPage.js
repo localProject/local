@@ -6,6 +6,8 @@ import { withUser } from '../services/withUser';
 import FancyBanner from '../components/FancyBanner';
 import ActionSearch from "../components/ActionSearch";
 import TestContainer from "../components/TestContainer";
+import ItemManagement from "../components/ItemManagement";
+import RouteTester from "../components/RouteTester";
 
 class ArtisanPage extends Component {
   state = {
@@ -43,12 +45,11 @@ class ArtisanPage extends Component {
 
       {/*const { user } = this.props; // get the user prop from props*/}
       {/*const { stuff } = this.state; // get stuff from state*/}
-
       let containerRendered;
       if (this.state.actionChosen == "Update Profile") {
         containerRendered = <ArtisanContainer />
       } else if (this.state.actionChosen == "Manage Inventory") {
-        containerRendered = <TestContainer />
+        containerRendered = <ItemManagement user={this.props.user}/>
       } else {
         containerRendered = <h2>Please choose an option to do something.</h2>
       }

@@ -1,9 +1,11 @@
+import axios from "axios";
 import React, { Component } from "react";
 import "./FancyBanner.css";
-import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom'
+import {withUser} from "../../services/withUser";
+import {update} from "../../services/withUser";
 
-export default class FancyBanner extends Component {
+class FancyBanner extends Component {
   state= {
     img : [
         'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMzI3NS43MDAwMyA4MDAiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iMTUzNC42NTM1MyIgeTE9IjEwNC4wNDYwOSIgeDI9Ijc1NS4wOTQyMSIgeTI9IjE0NTQuMjgyNDIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmMjlmNWEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1NDE0NjYiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTIiIHgxPSIxNDU2LjU3Mjk3IiB5MT0iMjE0LjU3MTY2IiB4Mj0iNzMwLjQ4MTk1IiB5Mj0iMTQ3Mi4xOTgxOSIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTMiIHgxPSIxMzczLjk1MDMiIHkxPSIzMzIuODU4MTciIHgyPSI4MjUuOTgwNTQiIHkyPSIxMjgxLjk2OTY0IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNCIgeDE9IjEyOTYuMTc2ODkiIHkxPSI0NTMuOTUwNTYiIHgyPSI2ODYuNTUxMDYiIHkyPSIxNTA5Ljg1MzQ4IiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+PGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQtNSIgeDE9IjI1NTUuMDE1OTQiIHkxPSIxNDkuNjc0NTYiIHgyPSIxNDUzLjM3MzkxIiB5Mj0iMjA1Ny43NzQ1MiIgeGxpbms6aHJlZj0iI2xpbmVhci1ncmFkaWVudCIvPjxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50LTYiIHgxPSIyNTIwLjE1MDkxIiB5MT0iMzA1Ljg2MjMzIiB4Mj0iMTU3NS43NzAzOCIgeTI9IjE5NDEuNTc3MzgiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz48bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC03IiB4MT0iMjQ4MC4zMDAyNSIgeTE9IjQ1Ny45NzEyNSIgeDI9IjE0MjguODQ1MDQiIHkyPSIyMjc5LjE0NTEiIHhsaW5rOmhyZWY9IiNsaW5lYXItZ3JhZGllbnQiLz48bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudC04IiB4MT0iMjQ0Mi41NTQ1NCIgeTE9IjU4NC40ODY0MyIgeDI9IjE1MDkuNTU3NzgiIHkyPSIyMjMzLjcyMzExIiB4bGluazpocmVmPSIjbGluZWFyLWdyYWRpZW50Ii8+PC9kZWZzPjx0aXRsZT5wYXJ0bmVyLWN1cnZlczwvdGl0bGU+PHBhdGggZD0iTTQ0OC4zNjgwNSwzMDQuNTQ0MTNjLTU2LjE0NzQ2LDEzMy42ODg0OC01NS43Mzg3NywyOTEuMDEyNDUtNTUuNzM4NzcsMjkxLjAxMjQ1bC04Ljc1NzkzLDIwNC40NDMzNkgyMTA5LjIyNTY2QzE5NzUuNTcsNjc3LjU3LDE4ODcuMDAzODYsNTY5LjE1NjY4LDE3NTguMDM2MzMsMzY3LjQxMDM0LDE2NTcuNDgxODgsMjEwLjExMTM5LDE1MTQuMDAzMTIsNzYuMjM2LDEzNDYuODI4MzguMDAwMDZINzQyLjA2MDY4QzU4NS4xNDkyNCw3My4yNTU2OCw0OTcuNzYwMjYsMTg2LjkzOTI3LDQ0OC4zNjgwNSwzMDQuNTQ0MTNaIiBvcGFjaXR5PSIwLjIiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50KSIvPjxwYXRoIGQ9Ik00MDguOTgxMTIsNzk5Ljk5OTk0SDE5NjYuODUxOTFjLTYwLjg3NjUzLTcyLjQ4NTExLTExOS43MDQ4My0xNTUuMzQ4LTE5MC44MTctMjY2LjU5MDA5QzE1NzcuODM5MzksMjIzLjM2OTIsMTIxMi44ODc2Nyw0LjMxODU0LDgyOC40MDU1NiwxMzguMjk4NzdjLTIwMC42NjIyMyw2OS45MjQ2OC0zMDUuODkxNzIsMTk4LjU1NjQtMzYyLjAzODgyLDMzMi4yNDQ4N0M0MTAuMjE5MjgsNjA0LjIzMjEyLDQxMC42MjgsNzYxLjU1NjA5LDQxMC42MjgsNzYxLjU1NjA5WiIgb3BhY2l0eT0iMC4yIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0yKSIvPjxwYXRoIGQ9Ik0xODQyLjMzMjUzLDc5OS45OTk4Yy0yMS4xMTQ3NS0zMC45MTkxOS00My4wNC02NC4yMzgyOC02Ni4yNzgwOC0xMDAuNTlDMTU3Ny44NTg5LDM4OS4zNjkxOSwxMjEyLjkwNzI0LDE3MC4zMTg2NSw4MjguNDI1MywzMDQuMjk4NjNjLTIwMC42NjI2LDY5LjkyNDgtMzA1Ljg5MjA5LDE5OC41NTY2NC0zNjIuMDM5MDYsMzMyLjI0NS0yMi45NTU1Nyw1NC42NTc1OS0zNi40NTYwNSwxMTMuMjYzNzktNDQuMzk3NDYsMTYzLjQ1NjE4WiIgb3BhY2l0eT0iMC4yIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC0zKSIvPjxwYXRoIGQ9Ik0xNzMwLjc0NzkxLDc5OS45OTkzOGMtMjA1LjQ5NzgtMjc0LjMyMTktNTQ1LjQ5LTQ1NC4wNDExNC05MDIuMzA3NjItMzI5LjcwMTE3QzYyOS4wNTEzNyw1MzkuNzc5MTcsNTIzLjg5NjU5LDY2Ny4yMjU0LDQ2Ny40ODUsNzk5Ljk5OTM4WiIgb3BhY2l0eT0iMC4yIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC00KSIvPjxwYXRoIGQ9Ik0xNzk3LjMzMzU3LDQyNy44Njg3MWMyMy4yMzM0LDM1LjA4MTMsNDUuMzE3MzgsNjcuMTU5NjcsNjYuODQ4MTQsOTYuOTgzNzYsMjUuOTc3NTQsMzUuOTgzNjQsNTEuMTUyMzQsNjguNjkwMDYsNzYuNTczMjQsOTkuNDM1Myw1Mi4wOTc5LDYzLjAwOTE2LDEwNS4yNDAyNCwxMTcuNzkyNiwxNjguNDcwNywxNzUuNzEyMTZoNzgyLjYwM1Y3NTMuMTUzNzVjMC02OTQuODU0ODYtNjgzLjg4OTE2LTgyNy4xOTE3Ny0xMTU1Ljc1OTc3LTQxOC43MjM1MXExMS4yODgwOSwxNi4yOTk2OCwyMS45NTM2MSwzMi45Njk0OFExNzc4LjI5NiwzOTkuMTEyODUsMTc5Ny4zMzM1Nyw0MjcuODY4NzFaIiBvcGFjaXR5PSIwLjIiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTUpIi8+PHBhdGggZD0iTTE5NDAuNzU1LDYyNC4yODc3OGM1Mi4wOTc5LDYzLjAwOTIyLDEwNS4yNDAyNCwxMTcuNzkyNTQsMTY4LjQ3MDcsMTc1LjcxMjE2aDc3OC4wMTE3MmMtNTcuNTkzNzUtNTgzLjI1NC02NDUuNzE1MDktNzAxLjg0OTg1LTEwODkuOTAzODEtMzcyLjEzMTI5LDIzLjIzMzQsMzUuMDgxMzYsNDUuMzE3MzgsNjcuMTU5NzMsNjYuODQ4MTQsOTYuOTgzODNDMTg5MC4xNTkyNSw1NjAuODM2MTIsMTkxNS4zMzQwNiw1OTMuNTQyNTQsMTk0MC43NTUsNjI0LjI4Nzc4WiIgb3BhY2l0eT0iMC4yIiBmaWxsPSJ1cmwoI2xpbmVhci1ncmFkaWVudC02KSIvPjxwYXRoIGQ9Ik0yMTA5LjIyNTksNzk5Ljk5OTk0aDc1MS4xMDg2NEMyNzM0Ljg4Mzg2LDM2Ni44MjQxNiwyMjU4LjM1NywyNzguNjA0MTksMTg2NC4xODE3MSw1MjQuODUyNDhjMjUuOTc3NTQsMzUuOTgzNjQsNTEuMTUyMzQsNjguNjkwMTksNzYuNTczMjQsOTkuNDM1M0MxOTkyLjg1MzEsNjg3LjI5NzA2LDIwNDUuOTk1NjgsNzQyLjA4MDM4LDIxMDkuMjI1OSw3OTkuOTk5OTRaIiBvcGFjaXR5PSIwLjIiIGZpbGw9InVybCgjbGluZWFyLWdyYWRpZW50LTcpIi8+PHBhdGggZD0iTTIxMDkuMjI1NjYsNzk5Ljk5OTk0aDY5MC42NTFjLTE2Ni40NTMtMjg0LjY4NTU1LTUzMC44OTAyNi0zNDEuMzU4MTUtODU5LjA5Mzg3LTE3NS42ODY3N0MxOTkyLjg3MzEyLDY4Ny4zMTMxNywyMDQ2LjAwNzY0LDc0Mi4wODk3OCwyMTA5LjIyNTY2LDc5OS45OTk5NFoiIG9wYWNpdHk9IjAuMiIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQtOCkiLz48L3N2Zz4=',
@@ -18,12 +20,44 @@ export default class FancyBanner extends Component {
     ]
 
   }
-   handleClick = () => {
+  
+  handleClick = () => {
        this.props.history.push('/login');
-      };
+  };
+
+  handleLogout = event => {
+    event.preventDefault();
+    axios.delete("/api/auth")
+      .then(() => {
+        this.props.clearUser();
+        update(null);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
 
     
   render() {
+    let displayUser;
+    if (this.props.user) {
+      displayUser = (
+        <div>
+          <div class="status">Welcome, {this.props.user.username}!</div>
+          <div class="manage">
+            <Link to="/artisan">Manage Account</Link>
+            <button class="logout" onClick={this.handleLogout}>Logout</button>
+          </div>
+        </div>
+      )
+    } else {
+      displayUser = (
+        <div>
+          <Link to="/login" class="status">Sign In</Link>
+          <div class="manage">Welcome, guest!</div>
+        </div>
+      )
+    }
+
       return(
     <div>
         <div class="banner">
@@ -32,36 +66,31 @@ export default class FancyBanner extends Component {
 no-repeat scroll center center/cover border-box , ${this.state.gradient[this.props.gradient]}`,
 'height': this.props.height}}>
         <div class="links">
-          < Link to='/' class="nav"> Home </Link>
-          <Link to='/products' class="nav"> Products </Link>
-          <div class="nav"> Stores </div>
-          <div class="nav"> About Us </div>
-          
-        </div>
+          <Link to='/' class="nav"> Home </Link>
+
+          <Link to='/products' class="nav"> Store </Link>
+          <Link to='/about' class="nav"> About </Link>
+          </div>
+        
         <div class="account">
-          <div class="profile-pic" />
+          {/*<div class="profile-pic" />*/}
           <div class="login-info">
             <div class="username" />
             <span class="pulse-button" />
-            <div class="status">Sign In</div>
-
-            <div class="manage "> Manage Account</div>
+            {displayUser}
           </div>
         </div>
 
         <div class="info">
           <div class="about">local.</div>
-          <div class="about small">Bringing local goods to global consumers.</div>
-          <div class="create">Create a store</div>
+          <div class="about small">{this.props.subtitle}</div>
         </div>
       </div>
       <div class="curve-bottom-1" />
-    </div>
+      </div>
     </div>
       );
   };
 };
 
-
-
-  
+export default withUser(FancyBanner);
