@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { update } from '../services/withUser';
+import FancyBanner from '../components/FancyBanner';
 
 class LoginPage extends Component {
   state = {
@@ -47,50 +48,62 @@ class LoginPage extends Component {
     const { error } = this.state;
 
     return (
-      <Grid fluid>
-        <Row>
-          <Col xs={6} xsOffset={3}>
+      <div>
+        <FancyBanner 
+        img="2"
+        gradient="0"
+        height="400px"
+        subtitle="Sign in to make changes to your profile and items."
+        />
+        <div className="container">
             <form onSubmit={this.handleLogin}>
-              <h1>Log In</h1>
               {error &&
                 <div>
                   {error}
                 </div>
               }
-              <div>
-                <TextField
-                  name="username"
-                  hintText="Username"
-                  floatingLabelText="Username"
-                  onChange={this.handleInputChanged}
-                />
+              <div className="row">
+                <div className="col-sm">
+                  <TextField
+                    name="username"
+                    hintText="Username"
+                    floatingLabelText="Username"
+                    onChange={this.handleInputChanged}
+                  />
+                </div>
               </div>
-              <div>
-                <TextField
-                  name="password"
-                  hintText="Password"
-                  floatingLabelText="Password"
-                  type="password"
-                  onChange={this.handleInputChanged}
-                />
+              <div className="row">
+                <div className="col-sm">
+                  <TextField
+                    name="password"
+                    hintText="Password"
+                    floatingLabelText="Password"
+                    type="password"
+                    onChange={this.handleInputChanged}
+                  />
+                </div>
               </div>
-              <div>
-                <RaisedButton primary type="submit">
-                  Log In
-                </RaisedButton>
+              <br />
+              <div className="row">
+                <div className="col-sm">
+                  <RaisedButton primary type="submit">
+                    Log In
+                  </RaisedButton>
+                </div>
               </div>
-              <p>
-                or
-              </p>
-              <p>
-                <Link to="/create">
-                Register
-                </Link>
-              </p>
+              <div className="row">
+                <div className="col-sm">
+                  or
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  <Link to="/create">Register</Link>
+                </div>
+              </div>
             </form>
-          </Col>
-        </Row>
-      </Grid>
+          </div>
+      </div>
     );
   }
 }
