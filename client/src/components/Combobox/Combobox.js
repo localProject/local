@@ -8,6 +8,7 @@ const Combobox = props => (
       <select
         className="form-control"
         onChange={props.handleChange}
+        name={props.name}
         value={props.value}
       >
         <option value="" />

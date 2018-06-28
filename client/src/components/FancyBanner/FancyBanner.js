@@ -25,8 +25,8 @@ class FancyBanner extends Component {
        this.props.history.push('/login');
   };
 
-  handleLogout = event => {
-    event.preventDefault();
+  handleLogout = e => {
+    e.preventDefault();
     axios.delete("/api/auth")
       .then(() => {
         this.props.clearUser();
