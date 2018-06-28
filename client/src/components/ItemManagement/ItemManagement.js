@@ -18,11 +18,40 @@ class ItemManagement extends Component {
                             ], 
                             productName:"",
                             productPrice:"",
-                            productURL:""
+                            productURL:"",
+                            artisan:{artisan:{}},
+                            vendorItems:[]
                         }
 
 
         this.uploadFiles=this.uploadFiles.bind(this)                            
+    }
+
+    getArtisanItems = () => {
+        let searchPath = `/api/vendoritems/all/${this.state.artisan.artisan.id}`;
+        console.log(searchPath)
+        axios.get(searchPath)
+        .then((response)=>{
+            let arrayOfItems = response.data.map(itemID=>{
+                return itemID.itemName;
+            })
+            this.setState({vendorItems:arrayOfItems})
+        })
+        .catch((err)=>console.log(err))
+    }
+
+    handleInputChange = event => {
+        // Pull the name and value properties off of the event.target (the element which triggered the event)
+        const { name, value } = event.target;
+    
+        // Set the state for the appropriate input field
+        this.setState({
+          [name]: value
+        });
+      };
+
+    componentDidMount(){
+        this.setState({artisan:this.props.user}, this.getArtisanItems)
     }
     
     dropped(myfiles) {
@@ -49,12 +78,35 @@ class ItemManagement extends Component {
           });
         this.setState({ files: [] });
     }
+
+    productSelected() {
+
+    }
+
+    clearAllForNewProduct() {
+
+    }
     
       render() {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-8">    
+                    <div className="col-md-8">   
+                        <div className="row">
+                            <div className="col-md-6">  
+                                <Combobox data={this.state.vendorItems}/>
+                            </div>
+                            <div className="col-md-2"> 
+                                <button onClick={this.productSelected}>
+                                    Go
+                                </button>
+                            </div>
+                            <div className="col-md-4"> 
+                                <button onClick={this.clearAllForNewProduct}>
+                                    Add new item
+                                </button>
+                            </div>
+                        </div>
                         <section>
                             <div className="form-group">
                                 <label>Product Name:</label><br/>
@@ -76,14 +128,13 @@ class ItemManagement extends Component {
                                     onChange={this.handleInputChange}
                                 />
                             </div>
-                            
                             <Combobox data={this.state.categoryChoices}/>
                             <div className="dropzone">
                                 {/* <Dropzone onDrop={this.onDrop.bind(this)}> */}
                                 <Dropzone onDrop={(files) => {
                                     this.dropped(files)
                                 }}>
-                                    <p>Drag a picture here.</p>
+                                    <p>Drag a picture here to upload</p>
                                 </Dropzone>
                             </div>
                             <aside>
@@ -96,7 +147,7 @@ class ItemManagement extends Component {
                     </div>
                     <div className="col-md-4">
                         <h1>Item will display as:</h1>
-                        <ItemCard price={this.productPrice} name={this.productName} company={`the company`}/>
+                        <ItemCard price={this.state.productPrice} name={this.state.productName} company={`the company`}/>
                     </div>    
                 </div>
             </div>
