@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-flexbox-grid';
 import { Link } from 'react-router-dom';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -53,7 +52,7 @@ class LoginPage extends Component {
         img="2"
         gradient="0"
         height="400px"
-        subtitle="Sign in to make changes to your profile and items."
+        subtitle="Sign in to your local. account."
         />
         <div className="container">
             <form onSubmit={this.handleLogin}>
