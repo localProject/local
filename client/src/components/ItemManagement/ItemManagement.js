@@ -33,7 +33,7 @@ class ItemManagement extends Component {
         axios.get(searchPath)
         .then((response)=>{
             let arrayOfItems = response.data.map(itemID=>{
-                return itemID.itemName;
+                return itemID;
             })
             this.setState({vendorItems:arrayOfItems})
         })
@@ -80,7 +80,7 @@ class ItemManagement extends Component {
     }
 
     productSelected() {
-
+        
     }
 
     clearAllForNewProduct() {
@@ -94,7 +94,7 @@ class ItemManagement extends Component {
                     <div className="col-md-8">   
                         <div className="row">
                             <div className="col-md-6">  
-                                <Combobox data={this.state.vendorItems}/>
+                                <Combobox data={this.state.vendorItems.map(item=>item.itemName)}/>
                             </div>
                             <div className="col-md-2"> 
                                 <button onClick={this.productSelected}>
