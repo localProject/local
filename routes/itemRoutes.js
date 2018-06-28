@@ -63,5 +63,17 @@ router.route("/api/vendoritems/addnew").post((req,res) => {
     })
 })
 
+router.route("/api/seedartisan").get((req,res) => {
+  let newItem = seed.json // need to import this file
+  // convert json to array
+  let arrayOfArtisans =  JSON.parse(newItem);
+  arrayOfArtisans.forEach(function(artisanToAdd){
+  	db.Artisans.create(artisanToAdd)
+	  .then(console.log(`added ${artisanToAdd.artisanName}`)
+	  .catch(err => console.log(err)));
+    })
+  res.json({message:`add complete`});
+  })
 
 module.exports = router;
+
