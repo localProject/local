@@ -5,7 +5,20 @@ const db = require("../models");
 
 
 router.route("/api/vendoritems/all/:vendorID").get((req, res) => {
+  console.log(req.params.vendorID);
+  
   db.Items.find({ artisanID: req.params.vendorID })
+    .then(dbItems => {
+      console.log(dbItems);
+      res.json(dbItems);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+router.route("/api/showallitems").get((req, res) => {
+  db.Items.find()
     .then(dbItems => {
       res.json(dbItems);
     })

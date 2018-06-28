@@ -49,7 +49,7 @@ class ArtisanPage extends Component {
       if (this.state.actionChosen == "Update Profile") {
         containerRendered = <ArtisanContainer />
       } else if (this.state.actionChosen == "Manage Inventory") {
-        containerRendered = <ItemManagement/>
+        containerRendered = <ItemManagement user={this.props.user}/>
       } else {
         containerRendered = <h2>Please choose an option to do something.</h2>
       }
