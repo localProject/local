@@ -15,6 +15,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "8.9.4"
+  },
   "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.17.5"

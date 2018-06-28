@@ -1,14 +1,10 @@
-  const router = require("express").Router();
+const router = require("express").Router();
 
 // require models
 const db = require("../models");
 
 
 router.route("/api/vendoritems/all/:vendorID").get((req, res) => {
-<<<<<<< HEAD
-  db.Items.find({ artisanID: req.params.vendorID })
-    .then(dbItems => {
-=======
   console.log(req.params.vendorID);
   
   db.Items.find({ artisanID: req.params.vendorID })
@@ -24,7 +20,6 @@ router.route("/api/vendoritems/all/:vendorID").get((req, res) => {
 router.route("/api/showallitems").get((req, res) => {
   db.Items.find()
     .then(dbItems => {
->>>>>>> 5fb91df8199990d109e3f539d20bcd46da38f26a
       res.json(dbItems);
     })
     .catch(err => {
