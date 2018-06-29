@@ -86,5 +86,28 @@ router.route("/api/seedartisan").get((req,res) => {
     res.json({message:`add complete`});
     })
 
+    router.route("/api/testSeed").get((req,res) => {
+      console.log(`got here`);
+      let newArtisanForTest = {
+        id: "9999",
+        artisanName: "test name",
+        address: "123Man",
+        city: "raleigh",
+        phone:"999.999.9999",
+        email: "no@thanks.com",
+        website: "http://www.google.com", 
+        category: "Art",
+        region: "Piedmont",
+        county: "Wake",
+        about: "Test about"
+      }
+      console.log(newArtisanForTest);
+                  
+        db.Artisan.create(newArtisanForTest)
+        .then(console.log(`added ${newArtisanForTest}`)
+        .catch(err => console.log(err)));
+      res.json({message:`add complete`});
+      })
+
 module.exports = router;
 
