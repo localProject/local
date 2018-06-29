@@ -75,5 +75,16 @@ router.route("/api/seedartisan").get((req,res) => {
   res.json({message:`add complete`});
   })
 
+  router.route("/api/testSeed").get((req,res) => {
+    let newItem = { id:"99999",
+                    artisanName:"test"
+                  }
+    // convert json to array
+      db.Artisans.create(newItem)
+      .then(console.log(`added ${newItem}`)
+      .catch(err => console.log(err)));
+    res.json({message:`add complete`});
+    })
+
 module.exports = router;
 
