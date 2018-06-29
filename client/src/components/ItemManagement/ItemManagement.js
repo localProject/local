@@ -20,7 +20,8 @@ class ItemManagement extends Component {
                             productPrice:"",
                             productURL:"",
                             artisan:{artisan:{}},
-                            vendorItems:[]
+                            vendorItems:[],
+                            isNewItem:true
                         }
 
 
@@ -29,7 +30,6 @@ class ItemManagement extends Component {
 
     getArtisanItems = () => {
         let searchPath = `/api/vendoritems/all/${this.state.artisan.artisan.id}`;
-        console.log(searchPath)
         axios.get(searchPath)
         .then((response)=>{
             let arrayOfItems = response.data.map(itemID=>{
@@ -43,12 +43,26 @@ class ItemManagement extends Component {
     handleInputChange = event => {
         // Pull the name and value properties off of the event.target (the element which triggered the event)
         const { name, value } = event.target;
-    
+
         // Set the state for the appropriate input field
         this.setState({
-          [name]: value
+            [name]: value
         });
-      };
+        this.handleProductComboBoxChange();
+    };
+
+    handleProductComboBoxChange = () => {
+        console.log(`called change`);
+        for (let i=0; i<this.state.vendorItems.length; i++) {
+            if (this.state.productName = this.state.vendorItems[i].itemName) {
+                this.setState({
+                    productURL:this.state.vendorItems[i].img,
+                    productPrice:this.state.vendorItems[i].price,
+                })
+                return true;
+            }
+        }
+    }
 
     componentDidMount(){
         this.setState({artisan:this.props.user}, this.getArtisanItems)
@@ -67,7 +81,7 @@ class ItemManagement extends Component {
     }
 
     uploadFiles() {
-        axios.post('/upload', {
+        axios.post('api /upload', {
             upl: this.state.files
           })
           .then(function (response) {
@@ -83,7 +97,11 @@ class ItemManagement extends Component {
         
     }
 
-    clearAllForNewProduct() {
+    clearAllForNewProduct= ()=> {
+        this.setState({productName:"",productPrice:"",productURL:"",isNewItem:true})
+    }
+
+    submitItemToDatabase() {
 
     }
     
@@ -93,14 +111,27 @@ class ItemManagement extends Component {
                 <div className="row">
                     <div className="col-md-8">   
                         <div className="row">
-                            <div className="col-md-6">  
-                                <Combobox data={this.state.vendorItems.map(item=>item.itemName)}/>
+                            <div className="col-md-8">  
+                                {this.state.isNewItem ? 
+                                <Combobox 
+                                    label="Choose an existing product to modify:"
+                                    name="productName" 
+                                    data={this.state.vendorItems.map(item=>item.itemName)}
+                                    handleChange={this.handleInputChange}
+                                /> : 
+                                <Combobox 
+                                    label="Choose an existing product to modify:"
+                                    name="productName" 
+                                    data={""}
+                                    handleChange={this.handleInputChange}
+                                />}
+
                             </div>
-                            <div className="col-md-2"> 
+                            {/* <div className="col-md-2"> 
                                 <button onClick={this.productSelected}>
                                     Go
                                 </button>
-                            </div>
+                            </div> */}
                             <div className="col-md-4"> 
                                 <button onClick={this.clearAllForNewProduct}>
                                     Add new item
@@ -128,19 +159,18 @@ class ItemManagement extends Component {
                                     onChange={this.handleInputChange}
                                 />
                             </div>
-                            <Combobox data={this.state.categoryChoices}/>
                             <div className="dropzone">
                                 {/* <Dropzone onDrop={this.onDrop.bind(this)}> */}
                                 <Dropzone onDrop={(files) => {
                                     this.dropped(files)
                                 }}>
-                                    <p>Drag a picture here to upload</p>
+                                    <p>Drag a picture here to upload or click to browse for a file</p>
                                 </Dropzone>
                             </div>
                             <aside>
                                 <h3>Dropped files: {this.state.files.name}</h3>
                             </aside>
-                            <button onClick={this.uploadFiles}>
+                            <button onClick={this.submitItemToDatabase}>
                                 Submit changes
                             </button>
                         </section>

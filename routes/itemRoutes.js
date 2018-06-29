@@ -38,7 +38,7 @@ router.route("/api/vendoritems/:itemID").get((req, res) => {
 });
 
 router.route("/api/vendoritems/:itemID").put((req, res) => {
-  db.Items.findOneAndUpdate({_id:req.body._id},{
+  db.Items.findOneAndUpdate({_id:req.params.itemID},{
     itemName:req.body.itemName,
     img:req.body.img,
     price:req.body.price,
@@ -74,6 +74,17 @@ router.route("/api/seedartisan").get((req,res) => {
     })
   res.json({message:`add complete`});
   })
+
+  router.route("/api/testSeed").get((req,res) => {
+    let newItem = { id:"99999",
+                    artisanName:"test"
+                  }
+    // convert json to array
+      db.Artisans.create(newItem)
+      .then(console.log(`added ${newItem}`)
+      .catch(err => console.log(err)));
+    res.json({message:`add complete`});
+    })
 
 module.exports = router;
 
