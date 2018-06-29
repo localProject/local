@@ -26,7 +26,9 @@ class ItemManagement extends Component {
                         }
 
 
-        this.uploadFiles=this.uploadFiles.bind(this)                            
+        this.uploadFiles=this.uploadFiles.bind(this)          
+        this.submitItemToDatabase=this.submitItemToDatabase.bind(this)
+        this.handleProductComboBoxChange=this.handleProductComboBoxChange.bind(this)
     }
 
     getArtisanItems = () => {
@@ -49,17 +51,26 @@ class ItemManagement extends Component {
         this.setState({
             [name]: value
         });
-        this.handleProductComboBoxChange();
+        if (name == "productName") {
+            console.log("got here");
+            this.handleProductComboBoxChange();
+        }
     };
 
     handleProductComboBoxChange = () => {
-        console.log(`called change`);
+        console.log(this.state.productName);
         for (let i=0; i<this.state.vendorItems.length; i++) {
             if (this.state.productName = this.state.vendorItems[i].itemName) {
+                let currentItemInfo={
+                        productURL:this.state.vendorItems[i].img,
+                        productPrice:this.state.vendorItems[i].price,
+                        productID:this.state._ID
+                    };
+                console.log(currentItemInfo);
                 this.setState({
-                    productURL:this.state.vendorItems[i].img,
-                    productPrice:this.state.vendorItems[i].price,
-                    productID:this.state._ID
+                    productURL:currentItemInfo.productURL,
+                    productPrice:currentItemInfo.productPrice,
+                    productID:currentItemInfo._ID
                 })
                 return true;
             }
@@ -99,7 +110,7 @@ class ItemManagement extends Component {
         this.setState({productName:"",productPrice:"",productURL:"",isNewItem:true})
     }
 
-    submitItemToDatabase() {
+    submitItemToDatabase = () => {
         let itemInformation = {
             itemName:this.state.productName,
             artisanID:this.state.artisan.artisan.id,

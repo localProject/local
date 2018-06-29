@@ -63,28 +63,28 @@ router.route("/api/vendoritems/addnew").post((req,res) => {
     })
 })
 
-router.route("/api/seedartisan").get((req,res) => {
-  let newItem = seed.json // need to import this file
-  // convert json to array
-  let arrayOfArtisans =  JSON.parse(newItem);
-  arrayOfArtisans.forEach(function(artisanToAdd){
-  	db.Artisans.create(artisanToAdd)
-	  .then(console.log(`added ${artisanToAdd.artisanName}`)
-	  .catch(err => console.log(err)));
-    })
+router.route("/api/testSeed").get((req,res) => {
+  console.log(`got here`);
+  let newArtisanForTest = {
+    id: "9999",
+    artisanName: "test name",
+    address: "123Man",
+    city: "raleigh",
+    phone:"999.999.9999",
+    email: "no@thanks.com",
+    website: "http://www.google.com", 
+    category: "Art",
+    region: "Piedmont",
+    county: "Wake",
+    about: "Test about"
+  }
+  console.log(newArtisanForTest);
+              
+    db.Artisan.create(newArtisanForTest)
+    .then(console.log(`added ${newArtisanForTest}`)
+    .catch(err => console.log(err)));
   res.json({message:`add complete`});
   })
-
-  router.route("/api/testSeed").get((req,res) => {
-    let newItem = { id:"99999",
-                    artisanName:"test"
-                  }
-    // convert json to array
-      db.Artisans.create(newItem)
-      .then(console.log(`added ${newItem}`)
-      .catch(err => console.log(err)));
-    res.json({message:`add complete`});
-    })
 
 module.exports = router;
 
