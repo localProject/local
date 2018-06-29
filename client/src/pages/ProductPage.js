@@ -2,13 +2,9 @@ import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import './ProductPage.css'
-
-
 import FancyBanner from '../components/FancyBanner'
 import ItemCardContainer from '../components/ItemCardContainer'
-import Logo from "../components/Logo";
 
 class ProductPage extends Component {
     state = {
@@ -33,7 +29,6 @@ class ProductPage extends Component {
                 }}
                 >Featured Store: Will's Goods</div>
                 <ItemCardContainer/>
-                <Logo />
            </div>
         )
     }

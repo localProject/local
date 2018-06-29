@@ -7,7 +7,6 @@ import ActionSearch from "../components/ActionSearch";
 import TestContainer from "../components/TestContainer";
 import ItemManagement from "../components/ItemManagement";
 import RouteTester from "../components/RouteTester";
-import Logo from "../components/Logo";
 
 class ArtisanPage extends Component {
   state = {
@@ -65,7 +64,6 @@ class ArtisanPage extends Component {
         />
         <ActionSearch render={this.renderThisComponent} />
         {containerRendered}
-        <Logo />
       </div>
     );
   }

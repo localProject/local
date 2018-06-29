@@ -2,9 +2,8 @@ import axios from "axios";
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-
 import { withUser, update } from "./services/withUser";
-
+import Logo from "./components/Logo";
 import CreateAccountPage from "./pages/CreateAccountPage";
 import HomePage from "./pages/HomePage";
 import AboutUsPage from "./pages/AboutUsPage";
@@ -49,6 +48,7 @@ class App extends Component {
             <Route exact path="/create/:company?" component={CreateAccountPage} />
             <Route component={NotFoundPage} />
           </Switch>
+          <Logo />
         </Fragment>
       </MuiThemeProvider>
     </Router>
