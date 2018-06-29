@@ -8,7 +8,6 @@ import ArtisanMap from "../components/ArtisanMap";
 import Search from "../components/Search/Search";
 import MapContainer from "../components/ArtisanMap";
 import FancyBanner from "../components/FancyBanner";
-import Logo from "../components/Logo";
 
 class HomePage extends Component {
   state = {
@@ -51,7 +50,6 @@ class HomePage extends Component {
         {/*<ArtisanMap google={this.props.google} artisans={this.state.artisans} />*/}
         <br />
         <CompanyBoxContainer searchResults={this.state.artisans} />
-        <Logo />
         </div>
     );
   }

@@ -4,7 +4,6 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FancyBanner from '../components/FancyBanner';
-import Logo from "../components/Logo";
 
 class CreateAccountPage extends Component {
   state = {
@@ -66,7 +65,6 @@ class CreateAccountPage extends Component {
         height="400px"
         subtitle="Create a local. account."
         />
-        <Logo />
         <div className="container">
           <form onSubmit={this.handleLogin}>
             {error &&
