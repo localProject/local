@@ -8,7 +8,7 @@ import './ProductPage.css'
 
 import FancyBanner from '../components/FancyBanner'
 import ItemCardContainer from '../components/ItemCardContainer'
-
+import Logo from "../components/Logo";
 
 class ProductPage extends Component {
     state = {
@@ -32,7 +32,8 @@ class ProductPage extends Component {
                 'font-size': '20px'
                 }}
                 >Featured Store: Will's Goods</div>
-           <ItemCardContainer/>
+                <ItemCardContainer/>
+                <Logo />
            </div>
         )
     }

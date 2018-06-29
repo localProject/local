@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, {Component} from 'react';
 import ArtisanContainer from "../components/ArtisanContainer";
-// import { List, ListItem } from 'material-ui/List';
 import { withUser } from '../services/withUser';
 import FancyBanner from '../components/FancyBanner';
 import ActionSearch from "../components/ActionSearch";
 import TestContainer from "../components/TestContainer";
 import ItemManagement from "../components/ItemManagement";
 import RouteTester from "../components/RouteTester";
+import Logo from "../components/Logo";
 
 class ArtisanPage extends Component {
   state = {
@@ -61,10 +61,11 @@ class ArtisanPage extends Component {
         img='2'
         gradient='0'
         height='400px'
-        subtitle="A place for artisans to call home."
+        subtitle="Edit your profile and manage your inventory."
         />
         <ActionSearch render={this.renderThisComponent} />
         {containerRendered}
+        <Logo />
       </div>
     );
   }

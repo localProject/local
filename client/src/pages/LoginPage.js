@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { update } from '../services/withUser';
 import FancyBanner from '../components/FancyBanner';
+import Logo from "../components/Logo";
 
 class LoginPage extends Component {
   state = {
@@ -102,6 +103,7 @@ class LoginPage extends Component {
               </div>
             </form>
           </div>
+          <Logo />
       </div>
     );
   }
