@@ -1,0 +1,15 @@
+.copyright {
+    position: fixed;
+    bottom: 10px;
+    margin-left: 23px !important;
+    text-align: left !important;
+    font-weight: bold;
+}
+
+.local-logo {
+    width: 150px;
+    height: 200px;
+    position: fixed;
+    left: 0px;
+    bottom: 20px;
+}

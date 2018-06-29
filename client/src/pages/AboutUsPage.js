@@ -1,14 +1,12 @@
-import axios from 'axios';
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FancyBanner from '../components/FancyBanner'
-import About from "../components/About/About";
+import About from "../components/About";
+import Logo from "../components/Logo";
 
 class AboutUsPage extends Component {
     render() {
         return (
-            <div className='about'>
+            <div>
                 <FancyBanner
                 img="2"
                 gradient="0"
@@ -16,12 +14,10 @@ class AboutUsPage extends Component {
                 subtitle="What are we all about?"
                 />
                 <About />
+                <Logo />
             </div>
         );
-    }
-
-                
-        
+    }      
 }
 
 
