@@ -19,6 +19,7 @@ class ItemManagement extends Component {
                             productName:"",
                             productPrice:"",
                             productURL:"",
+                            productID:"",
                             artisan:{artisan:{}},
                             vendorItems:[],
                             isNewItem:true
@@ -58,6 +59,7 @@ class ItemManagement extends Component {
                 this.setState({
                     productURL:this.state.vendorItems[i].img,
                     productPrice:this.state.vendorItems[i].price,
+                    productID:this.state._ID
                 })
                 return true;
             }
@@ -93,16 +95,37 @@ class ItemManagement extends Component {
         this.setState({ files: [] });
     }
 
-    productSelected() {
-        
-    }
-
     clearAllForNewProduct= ()=> {
         this.setState({productName:"",productPrice:"",productURL:"",isNewItem:true})
     }
 
     submitItemToDatabase() {
+        let itemInformation = {
+            itemName:this.state.productName,
+            artisanID:this.state.artisan,
+            img:this.state.productURL
+        };
 
+        if (this.state.isNewItem) {
+            axios.post("/api/vendoritems/addnew", { itemInformation })
+            .then(function(res) {
+                console.log(res);
+                this.clearAllForNewProduct()
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        } else {
+            let searchPath=`/api/vendoritems/${this.state.productID}`;
+            axios.put(searchPath,{itemInformation})
+            .then(function(res) {
+                console.log(res);
+                this.clearAllForNewProduct()
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        }
     }
     
       render() {
