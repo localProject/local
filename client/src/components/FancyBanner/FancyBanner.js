@@ -14,9 +14,9 @@ class FancyBanner extends Component {
         'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAwIDgwMCI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOiNmZmY7b3BhY2l0eTowLjE0O308L3N0eWxlPjwvZGVmcz48dGl0bGU+Y2FydC1jcnV2ZXMtMjwvdGl0bGU+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMzAwMCwwVjYzOC43M2MtMTk1LjE1OTkxLTE0Mi43NS01ODMuODMwMDgtMzkwLjU1LTk2Ni4zMy00MjEuNDEtMzY3LjktMjkuNjktNjE5LjU2LDg0LjU0LTk3My41NCwxODMuNTJDOTA1LjgsNDQzLjk5LDczMi4wMiw0ODQuMjUsNTIwLjY4LDUwOC40MSwzMjYuMTksNTMwLjY1LDE1MC44MSw1NDAuMTMsMCw1NDIuNDFWMFoiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMDAwLDBWMzk2LjI1Yy0xODcuNjItOTguMzgtNjMyLjQ2LTMwMS45OS0xMDcyLjc4LTI4NS4yN0MxNTg4LjcxLDEyMy44MywxMzUyLjc0LDI1NC43MiwxMDYwLjEzLDQwMC44NCw4OTQuOTQsNDgzLjMzLDcxMS42OSw1NzAuNjcsNDgxLjc1LDY0NC4zNkE0MDg4LjM2Njg4LDQwODguMzY2ODgsMCwwLDEsMCw3NjcuMzhWMFoiLz48L3N2Zz4='
     ],
     gradient : [
-        'linear-gradient( 135deg, #FFA6B7 10%, #1E2AD2 100%) no-repeat scroll center center/cover',
-        'linear-gradient( 135deg, #97ABFF 10%, #123597 100%) no-repeat scroll center center/cover',
-        'linear-gradient( 135deg, #92FFC0 10%, #002661 100%) no-repeat scroll center center/cover'
+        'linear-gradient( 135deg, #000000 10%, #434343 100%) no-repeat scroll center center/cover',
+        'linear-gradient( 135deg, #000000 10%, #434343 100%) no-repeat scroll center center/cover',
+        'linear-gradient( 135deg, #000000 10%, #434343 100%) no-repeat scroll center center/cover'
     ]
 
   }
