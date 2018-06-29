@@ -102,7 +102,7 @@ class ItemManagement extends Component {
     submitItemToDatabase() {
         let itemInformation = {
             itemName:this.state.productName,
-            artisanID:this.state.artisan,
+            artisanID:this.state.artisan.artisan.id,
             img:this.state.productURL
         };
 
