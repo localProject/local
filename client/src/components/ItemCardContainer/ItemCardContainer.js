@@ -5,43 +5,20 @@ import "./ItemCardContainer.css"
 class ItemCardContainer extends Component {
     state = {
         searchResults: [],
-        products: [
-            {
-                name: 'Large Hotdog',
-                price: '$140',
-             company: "Will's Goods",
-             img: 'https://gradientjoy.com/450'
-            },
-            {
-                name: 'Large Hotdog',
-                price: '$140',
-             company: "Will's Goods",
-             img: 'https://gradientjoy.com/450'
-            },
-            {
-                name: 'Large Hotdog',
-                price: '$140',
-             company: "Will's Goods",
-             img: 'https://gradientjoy.com/450'
-            },
-            {
-                name: 'Large Hotdog',
-                price: '$140',
-             company: "Will's Goods",
-             img: 'https://gradientjoy.com/450'
-            },
-            {
-                name: 'Large Hotdog',
-                price: '$140',
-             company: "Will's Goods",
-             img: 'https://gradientjoy.com/450'
-            }
-        ],
+        products: [],
        count:0
        
     };
 
     componentDidMount() {
+        let searchPath = `/api/showallitems`;
+        axios.get(searchPath)
+        .then((response)=>{
+            let arrayOfProducts=response.data;
+            this.setState({products:arrayOfProducts})
+        })
+        .catch((err)=>console.log(err))
+
         //display all items
      //   axios.get("/api/items")
      //       .then(res => this.setState({searchResults: res.data}))
@@ -62,9 +39,10 @@ console.log(this.state.products);
                   
                     <ItemCard
                    price={result.price}
-                   name={result.name}
-                   company={result.company}
+                   name={result.itemName}
+                   company={""}
                    id={index}
+                   img={result.img}
                    // item={result}
                     />
                 ))}

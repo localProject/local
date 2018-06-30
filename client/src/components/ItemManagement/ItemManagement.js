@@ -3,6 +3,7 @@ import axios from "axios";
 import Dropzone from 'react-dropzone';
 import Combobox from '../Combobox';
 import ItemCard from '../ItemCard';
+import ItemCardContainer from '../ItemCardContainer'
 import {withUser} from "../../services/withUser";
 
 class ItemManagement extends Component {
@@ -217,8 +218,8 @@ class ItemManagement extends Component {
                     </div>
                     <div className="col-md-4">
                         <h1>Item will display as:</h1>
-                        <ItemCard style={{opacity:1.0}} price={this.state.productPrice} name={this.state.productName} company={`the company`}/>
-                    </div>    
+                        <ItemCard price={this.state.productPrice} name={this.state.productName} company={this.state.artisan.username} img={this.state.productURL}/>
+                    </div> 
                 </div>
             </div>
         );
