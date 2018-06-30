@@ -28,7 +28,8 @@ class ItemManagement extends Component {
 
         this.uploadFiles=this.uploadFiles.bind(this)          
         this.submitItemToDatabase=this.submitItemToDatabase.bind(this)
-        this.handleProductComboBoxChange=this.handleProductComboBoxChange.bind(this)
+        // this.handleProductComboBoxChange=this.handleProductComboBoxChange.bind(this)
+        this.clearAllForNewProduct=this.clearAllForNewProduct.bind(this)
     }
 
     getArtisanItems = () => {
@@ -46,31 +47,33 @@ class ItemManagement extends Component {
     handleInputChange = event => {
         // Pull the name and value properties off of the event.target (the element which triggered the event)
         const { name, value } = event.target;
-
+        console.log(`field name: ${name} with value: ${value}`)
         // Set the state for the appropriate input field
         this.setState({
             [name]: value
         });
         if (name == "productName") {
             console.log("got here");
-            this.handleProductComboBoxChange();
+            console.log(this.state.productName);
+            this.handleProductComboBoxChange(value);
+            // this.setState({isNewItem:false});
         }
     };
 
-    handleProductComboBoxChange = () => {
-        console.log(this.state.productName);
+    handleProductComboBoxChange = (productName) => {
+        console.log(productName);
         for (let i=0; i<this.state.vendorItems.length; i++) {
-            if (this.state.productName = this.state.vendorItems[i].itemName) {
+            if (productName === this.state.vendorItems[i].itemName) {
                 let currentItemInfo={
                         productURL:this.state.vendorItems[i].img,
                         productPrice:this.state.vendorItems[i].price,
-                        productID:this.state._ID
+                        productID:this.state.vendorItems[i]._id
                     };
                 console.log(currentItemInfo);
                 this.setState({
                     productURL:currentItemInfo.productURL,
                     productPrice:currentItemInfo.productPrice,
-                    productID:currentItemInfo._ID
+                    productID:currentItemInfo.productID,
                 })
                 return true;
             }
@@ -88,8 +91,10 @@ class ItemManagement extends Component {
         // }))
         console.log(this);
         console.log(this.state);
+        let productURL = `https://s3.us-east-2.amazonaws.com/gbkherokubucket/${myfile.name}`
         this.setState({files:myfile});
-        console.log(myfile);
+        this.setState({productURL:productURL})
+        console.log(productURL);
         console.log(typeof this.state.files);
     }
 
@@ -114,14 +119,14 @@ class ItemManagement extends Component {
         let itemInformation = {
             itemName:this.state.productName,
             artisanID:this.state.artisan.artisan.id,
-            img:this.state.productURL
+            img:this.state.productURL,
+            price:this.state.productPrice
         };
 
         if (this.state.isNewItem) {
             axios.post("/api/vendoritems/addnew", { itemInformation })
             .then(function(res) {
                 console.log(res);
-                this.clearAllForNewProduct()
             })
             .catch(function(error){
                 console.log(error)
@@ -131,12 +136,12 @@ class ItemManagement extends Component {
             axios.put(searchPath,{itemInformation})
             .then(function(res) {
                 console.log(res);
-                this.clearAllForNewProduct()
             })
             .catch(function(error){
                 console.log(error)
             })
         }
+        this.clearAllForNewProduct();
     }
     
       render() {
@@ -204,14 +209,15 @@ class ItemManagement extends Component {
                             <aside>
                                 <h3>Dropped files: {this.state.files.name}</h3>
                             </aside>
-                            <button onClick={this.submitItemToDatabase}>
+                            {/* <button onClick={this.submitItemToDatabase}> */}
+                            <button style={{marginBottom:"30px"}} onClick={this.submitItemToDatabase}>
                                 Submit changes
                             </button>
                         </section>
                     </div>
                     <div className="col-md-4">
                         <h1>Item will display as:</h1>
-                        <ItemCard price={this.state.productPrice} name={this.state.productName} company={`the company`}/>
+                        <ItemCard style={{opacity:1.0}} price={this.state.productPrice} name={this.state.productName} company={`the company`}/>
                     </div>    
                 </div>
             </div>
