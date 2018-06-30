@@ -57,7 +57,6 @@ aws.config.update({
   const s3 = new aws.S3();
 
 
-
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

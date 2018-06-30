@@ -1,4 +1,16 @@
 const router = require("express").Router();
+// const aws = require('aws-sdk'); 
+// const multer = require('multer');
+// const multerS3 = require('multer-s3'); 
+// require("dotenv").config();
+// s3 = new aws.S3();
+
+// aws.config.update({
+//     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+//     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+//     region: 'us-east-2'
+// });
+
 
 // require models
 const db = require("../models");
@@ -56,8 +68,6 @@ router.route("/api/vendoritems/:itemID").put((req, res) => {
 
 router.route("/api/vendoritems/addnew").post((req,res) => {
   const newItem = req.body;
-  console.log('here is what was passed:')
-  console.log(newItem.itemInformation)
   db.Items.create(newItem.itemInformation)
     .then(() => res.json({message:'item added'}))
     .catch(err=> {
@@ -65,6 +75,23 @@ router.route("/api/vendoritems/addnew").post((req,res) => {
     })
 })
 
-
+// router.route("/api/upload").post((req,res) => {
+//   console.log('got upload post');
+//   var upload = multer({
+//     storage: multerS3({
+//       s3: s3,
+//       ACL:'public-read',
+//       bucket: 'gbkherokubucket',
+//       key: function (req, file, cb) {
+//         console.log(file);
+//         cb(null, file.originalname); //use Date.now() for unique file keys
+//       }
+//     })
+//   });
+//   console.log(req.body);
+//   upload.array(req.body.upl,1);
+//   res.json({message:"uploaded"})
+// })
+  
 module.exports = router;
 
