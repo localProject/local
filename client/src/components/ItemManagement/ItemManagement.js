@@ -68,13 +68,14 @@ class ItemManagement extends Component {
                 let currentItemInfo={
                         productURL:this.state.vendorItems[i].img,
                         productPrice:this.state.vendorItems[i].price,
-                        productID:this.state.vendorItems[i]._id
+                        productID:this.state.vendorItems[i]._id,
                     };
                 console.log(currentItemInfo);
                 this.setState({
                     productURL:currentItemInfo.productURL,
                     productPrice:currentItemInfo.productPrice,
                     productID:currentItemInfo.productID,
+                    isNewItem:false
                 })
                 return true;
             }
@@ -144,6 +145,7 @@ class ItemManagement extends Component {
         }
         this.uploadFiles();
         this.clearAllForNewProduct();
+        this.getArtisanItems();
     }
     
       render() {
@@ -153,20 +155,12 @@ class ItemManagement extends Component {
                     <div className="col-md-8">   
                         <div className="row">
                             <div className="col-md-8">  
-                                {this.state.isNewItem ? 
                                 <Combobox 
                                     label="Choose an existing product to modify:"
                                     name="productName" 
                                     data={this.state.vendorItems.map(item=>item.itemName)}
                                     handleChange={this.handleInputChange}
-                                /> : 
-                                <Combobox 
-                                    label="Choose an existing product to modify:"
-                                    name="productName" 
-                                    data={""}
-                                    handleChange={this.handleInputChange}
-                                />}
-
+                                />  
                             </div>
                             {/* <div className="col-md-2"> 
                                 <button onClick={this.productSelected}>
