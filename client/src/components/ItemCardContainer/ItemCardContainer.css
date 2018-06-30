@@ -110,7 +110,7 @@ float: left;
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
    overflow: hidden;
-
+  background-size: cover;
   height: 225px;
   width: 225px;
   position: absolute;
