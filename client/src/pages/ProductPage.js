@@ -27,7 +27,7 @@ class ProductPage extends Component {
                 'margin-bottom': '15px',
                 'font-size': '20px'
                 }}
-                >Featured Store: Will's Goods</div>
+                >lovingly produced local goods</div>
                 <ItemCardContainer/>
            </div>
         )

@@ -43,7 +43,7 @@ html {
 
 .product-card
 {
-    opacity:0;
+    opacity:1;
  
   display: inline-block;
 float: left;
