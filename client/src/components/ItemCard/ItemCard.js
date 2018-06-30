@@ -17,7 +17,7 @@ style={{
 
      <div class='product-image' style={{ 'background-image': `url(${props.img})` }}></div>
      <div class='product-info'>
-     <div class='product-price'>{props.price}</div>
+     <div class='product-price'>${props.price}</div>
      <div class='product-info-text'>
      <div class='product-name'>{props.name}</div>
      </div>
