@@ -36,7 +36,6 @@ console.log(this.state.products);
             <div className="product-container">
                 {this.state.products.map((result,index) => (
                    // {setState({count: state.count + 1})}
-                  
                     <ItemCard
                    price={result.price}
                    name={result.itemName}

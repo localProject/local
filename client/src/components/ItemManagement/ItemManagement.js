@@ -99,8 +99,8 @@ class ItemManagement extends Component {
         console.log(typeof this.state.files);
     }
 
-    uploadFiles() {
-        axios.post('api /upload', {
+    uploadFiles = () => {
+        axios.post('api/upload', {
             upl: this.state.files
           })
           .then(function (response) {
@@ -142,6 +142,7 @@ class ItemManagement extends Component {
                 console.log(error)
             })
         }
+        this.uploadFiles();
         this.clearAllForNewProduct();
     }
     
